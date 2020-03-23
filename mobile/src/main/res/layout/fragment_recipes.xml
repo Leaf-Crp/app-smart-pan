@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bolditalic"
             android:text="Rec"
-            android:textColor="#FF9800"
+            android:textColor="@color/rouge"
             android:textSize="24dp"/>
 
         <TextView
@@ -776,7 +776,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_bold"
                                 android:text="Recette 3"
-                                android:textColor="#37AF57"
+                                android:textColor="@color/rouge"
                                 android:textSize="24dp" />
 
 

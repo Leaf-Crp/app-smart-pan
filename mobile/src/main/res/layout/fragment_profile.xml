@@ -10,7 +10,7 @@
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/grad"
+        android:background="@color/rouge"
         android:paddingBottom="20dp">
 
         <RelativeLayout
@@ -55,7 +55,7 @@
             android:fontFamily="sans-serif"
             android:text="new york, usa"
             android:textAllCaps="true"
-            android:textColor="@color/address"
+            android:textColor="@color/white"
             android:textSize="14sp" />
 
     </RelativeLayout>
