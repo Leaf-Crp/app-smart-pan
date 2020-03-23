@@ -18,16 +18,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bolditalic"
-            android:text="Food"
+            android:text="Rec"
             android:textColor="#FF9800"
             android:textSize="24dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
             android:fontFamily="@font/roboto_bolditalic"
-            android:text="Menu"
+            android:text="ettes"
             android:textColor="#fff"
             android:textSize="24dp"/>
     </LinearLayout>
@@ -36,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
-        android:text="text discription food menu"
+        android:text="smart frying pan"
         android:textColor="#fff"
         android:textSize="14dp"/>
 
@@ -66,7 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Food Menu1"
+                        android:text="Recette 1"
                         android:textColor="#fdb501"
                         android:textSize="24dp" />
 
@@ -300,7 +299,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Food Menu2"
+                        android:text="Recette 2"
                         android:textColor="#FF5832"
                         android:textSize="24dp" />
 
@@ -534,7 +533,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Food Menu3"
+                        android:text="Recette 3"
                         android:textColor="#37AF57"
                         android:textSize="24dp" />
 
