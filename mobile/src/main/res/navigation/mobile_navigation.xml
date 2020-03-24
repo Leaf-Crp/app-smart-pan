@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_recipes"
-        android:name="com.example.app_smart_pan.ui.recipes.RecipesFragment"
+        android:name="com.example.app_smart_pan.ui.recipes.RecipeFragment"
         tools:layout="@layout/fragment_recipes" />
 
     <fragment

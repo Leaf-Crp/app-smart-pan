@@ -8,7 +8,7 @@ import com.example.app_smart_pan.steps.fragments.FragmentPage;
 
 
 public class SwipeAdapter extends FragmentStatePagerAdapter {
-    public SwipeAdapter(FragmentManager fm) {super(fm);}
+    public SwipeAdapter(FragmentManager fm, int bh) {super(fm, bh);}
 
     @Override
     public Fragment getItem(int position) {

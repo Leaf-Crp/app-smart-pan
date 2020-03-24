@@ -13,7 +13,7 @@ public class StepActivity extends AppCompatActivity {
         setContentView(R.layout.activity_step);
         ViewPager viewPager = findViewById(R.id.viewPager);
         viewPager.setOffscreenPageLimit(1);
-        SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
+        SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager(), 0 );
         viewPager.setAdapter(swipeAdapter);
         viewPager.setCurrentItem(0);
     }
