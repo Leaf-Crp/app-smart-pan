@@ -1,5 +1,6 @@
 package com.example.app_smart_pan.ui.recipes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.app_smart_pan.R;
+import com.example.app_smart_pan.StepActivity;
 import com.example.app_smart_pan.recipe.RecipeAdapter;
 import com.example.services.api.RecipesCall;
 import com.example.services.beans.Recipe;
@@ -67,6 +69,9 @@ public class RecipeFragment extends Fragment {
                 recipes = response.body().stream().collect(Collectors.toCollection(ArrayList::new));
                 recipeAdapter = new RecipeAdapter(getContext(), recipes);
                 listView.setAdapter(recipeAdapter);
+                listView.setOnItemClickListener((parent, view, position, id) -> {
+                    openStepActivity(recipes.get(position));
+                });
             }
 
             @Override
@@ -76,17 +81,10 @@ public class RecipeFragment extends Fragment {
         });
     }
 
-//    CardView cardView = root.findViewById(R.id.cardView1);
-//        cardView.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View view) {
-//            openStepActivity();
-//        }
-//    });
-//        return root;
-//    public void openStepActivity() {
-//        Intent intent = new Intent();
-//        intent.setClass(getContext(), StepActivity.class);
-//        startActivity(intent);
-//    }
+    public void openStepActivity(Recipe recipe) {
+        Intent intent = new Intent();
+        intent.setClass(getContext(), StepActivity.class);
+        intent.putExtra("RECIPE", recipe);
+        startActivity(intent);
+    }
 }

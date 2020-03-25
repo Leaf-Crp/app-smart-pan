@@ -7,6 +7,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface RecipesCall {
+
     @GET("recipes")
     Call<List<Recipe>> allRecipes();
 }

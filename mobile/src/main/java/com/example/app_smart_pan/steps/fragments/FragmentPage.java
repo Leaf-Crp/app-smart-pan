@@ -18,10 +18,10 @@ public class FragmentPage extends Fragment {
         final View view;
         Bundle bundle = getArguments();
         int pageNumber = bundle.getInt("pageNumber");
-
+        String label = bundle.getString("LABEL");
         view = inflater.inflate(R.layout.fragment_step, container, false);
         TextView textView = (TextView) view.findViewById(R.id.pageNumber);
-        textView.setText("Step" + pageNumber);
+        textView.setText("ETAPE " + pageNumber + ": " + label);
         return view;
     }
 }
