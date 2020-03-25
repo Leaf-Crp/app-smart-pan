@@ -16,7 +16,7 @@ import java.util.List;
 public class RecipeAdapter extends BaseAdapter {
 
     Context context;
-    ArrayList<Recipe> recipes;
+    List<Recipe> recipes;
 
     public RecipeAdapter(Context context, ArrayList<Recipe> recipes) {
         this.context = context;
@@ -42,7 +42,7 @@ public class RecipeAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = View.inflate(context, R.layout.card_item, null);
+            convertView = View.inflate(context, R.layout.card_recipe_item, null);
         }
 
         ImageView imageView = convertView.findViewById(R.id.recipe_imageView);

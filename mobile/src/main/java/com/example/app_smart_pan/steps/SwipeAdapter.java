@@ -22,7 +22,7 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
         Fragment fragment = new FragmentPage();
         Bundle bundle = new Bundle();
         bundle.putInt("pageNumber", position+1);
-        bundle.putString("LABEL", recipe.getSteps().get(position).getLabel());
+        bundle.putSerializable("STEP", recipe.getSteps().get(position));
         fragment.setArguments(bundle);
         return fragment;
     }
