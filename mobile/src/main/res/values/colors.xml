@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="spash_screen">#9D0E40</color>
     <color name="colorStatusBar">#9E0E40</color>
     <color name="rouge">#9E0E40</color>
     <color name="address">#2F7092</color>

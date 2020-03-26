@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.steps;
+package com.example.app_smart_pan.ui.steps.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -13,12 +13,12 @@ import com.example.services.beans.Ingredients;
 
 import java.util.List;
 
-public class IngredientAdapter extends BaseAdapter {
+public class ListIngredientAdapter extends BaseAdapter {
 
     Context context;
     List<Ingredients> ingredients;
 
-    public  IngredientAdapter(Context context, List<Ingredients> ingredients) {
+    public ListIngredientAdapter(Context context, List<Ingredients> ingredients) {
         this.context = context;
         this.ingredients = ingredients;
     }

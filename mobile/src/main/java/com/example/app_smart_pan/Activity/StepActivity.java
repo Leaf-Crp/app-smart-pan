@@ -1,9 +1,11 @@
-package com.example.app_smart_pan;
+package com.example.app_smart_pan.Activity;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-import com.example.app_smart_pan.steps.SwipeAdapter;
+
+import com.example.app_smart_pan.R;
+import com.example.app_smart_pan.ui.steps.SwipeAdapter;
 import com.example.services.beans.Recipe;
 
 public class StepActivity extends AppCompatActivity {

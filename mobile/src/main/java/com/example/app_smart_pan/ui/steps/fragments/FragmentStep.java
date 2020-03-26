@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.steps.fragments;
+package com.example.app_smart_pan.ui.steps.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,13 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.app_smart_pan.R;
-import com.example.app_smart_pan.recipe.RecipeAdapter;
-import com.example.app_smart_pan.steps.IngredientAdapter;
+import com.example.app_smart_pan.ui.steps.adapter.ListIngredientAdapter;
 import com.example.services.beans.Step;
 
-import java.util.List;
-
-public class FragmentPage extends Fragment {
+public class FragmentStep extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,8 +28,8 @@ public class FragmentPage extends Fragment {
         textView.setText("ETAPE " + pageNumber + ": " + step.getLabel());
 
         ListView listView = view.findViewById(R.id.list_ingredients);
-        IngredientAdapter ingredientAdapter = new IngredientAdapter(getContext(), step.getIngredients());
-        listView.setAdapter(ingredientAdapter);
+        ListIngredientAdapter listIngredientAdapter = new ListIngredientAdapter(getContext(), step.getIngredients());
+        listView.setAdapter(listIngredientAdapter);
 
         return view;
     }

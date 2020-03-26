@@ -1,10 +1,10 @@
-package com.example.app_smart_pan.steps;
+package com.example.app_smart_pan.ui.steps;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import com.example.app_smart_pan.steps.fragments.FragmentPage;
+import com.example.app_smart_pan.ui.steps.fragments.FragmentStep;
 import com.example.services.beans.Recipe;
 
 
@@ -19,7 +19,7 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = new FragmentPage();
+        Fragment fragment = new FragmentStep();
         Bundle bundle = new Bundle();
         bundle.putInt("pageNumber", position+1);
         bundle.putSerializable("STEP", recipe.getSteps().get(position));

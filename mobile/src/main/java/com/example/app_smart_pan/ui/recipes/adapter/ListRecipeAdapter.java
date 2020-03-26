@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.recipe;
+package com.example.app_smart_pan.ui.recipes.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -13,12 +13,12 @@ import com.example.services.beans.Recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeAdapter extends BaseAdapter {
+public class ListRecipeAdapter extends BaseAdapter {
 
     Context context;
     List<Recipe> recipes;
 
-    public RecipeAdapter(Context context, ArrayList<Recipe> recipes) {
+    public ListRecipeAdapter(Context context, ArrayList<Recipe> recipes) {
         this.context = context;
         this.recipes = recipes;
     }

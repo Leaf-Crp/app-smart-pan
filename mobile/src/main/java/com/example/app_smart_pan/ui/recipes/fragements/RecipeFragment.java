@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.ui.recipes;
+package com.example.app_smart_pan.ui.recipes.fragements;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.app_smart_pan.R;
-import com.example.app_smart_pan.StepActivity;
-import com.example.app_smart_pan.recipe.RecipeAdapter;
+import com.example.app_smart_pan.Activity.StepActivity;
+import com.example.app_smart_pan.ui.recipes.adapter.ListRecipeAdapter;
+import com.example.app_smart_pan.ws.WSListener;
 import com.example.services.api.RecipesCall;
 import com.example.services.beans.Recipe;
 
@@ -33,15 +34,13 @@ public class RecipeFragment extends Fragment {
     private TextView textViewResult;
     private ListView listView;
     private ArrayList<Recipe> recipes;
-    private RecipeAdapter recipeAdapter;
+    private ListRecipeAdapter listRecipeAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        RecipeViewModel recipeViewModel = ViewModelProviders.of(this).get(RecipeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_recipes, container, false);
 
         listView = root.findViewById(R.id.list_recipe);
         textViewResult = root.findViewById(R.id.text_view_result);
-
         allRecipes();
         return root;
     }
@@ -67,8 +66,8 @@ public class RecipeFragment extends Fragment {
 //                    return;
 //                }
                 recipes = response.body().stream().collect(Collectors.toCollection(ArrayList::new));
-                recipeAdapter = new RecipeAdapter(getContext(), recipes);
-                listView.setAdapter(recipeAdapter);
+                listRecipeAdapter = new ListRecipeAdapter(getContext(), recipes);
+                listView.setAdapter(listRecipeAdapter);
                 listView.setOnItemClickListener((parent, view, position, id) -> {
                     openStepActivity(recipes.get(position));
                 });
