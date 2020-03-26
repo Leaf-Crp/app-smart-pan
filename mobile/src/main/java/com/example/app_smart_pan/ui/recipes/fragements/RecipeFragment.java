@@ -10,12 +10,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.app_smart_pan.R;
 import com.example.app_smart_pan.Activity.StepActivity;
 import com.example.app_smart_pan.ui.recipes.adapter.ListRecipeAdapter;
-import com.example.app_smart_pan.ws.WSListener;
 import com.example.services.api.RecipesCall;
 import com.example.services.beans.Recipe;
 
