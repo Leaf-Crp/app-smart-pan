@@ -1,4 +1,4 @@
-package com.example.app_smart_pan;
+package com.example.app_smart_pan.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.app_smart_pan.Activity.login.LoginActivity;
+import com.example.app_smart_pan.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -18,13 +21,10 @@ public class SplashScreenActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         MediaPlayer splashSound = MediaPlayer.create(getApplicationContext(), R.raw.voila);
 //        splashSound.start();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            finish();
         }, DELAY);
     }
 }
