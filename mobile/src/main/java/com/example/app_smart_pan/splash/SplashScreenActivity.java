@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.Activity;
+package com.example.app_smart_pan.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.app_smart_pan.Activity.login.LoginActivity;
 import com.example.app_smart_pan.R;
+import com.example.app_smart_pan.login.LoginActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

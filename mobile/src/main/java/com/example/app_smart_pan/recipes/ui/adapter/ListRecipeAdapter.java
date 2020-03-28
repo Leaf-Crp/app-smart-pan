@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.ui.recipes.adapter;
+package com.example.app_smart_pan.recipes.ui.adapter;
 
 import android.content.Context;
 import android.view.View;

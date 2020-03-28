@@ -1,10 +1,11 @@
-package com.example.app_smart_pan.ui.steps;
+package com.example.app_smart_pan.recipes.steps.ui;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import com.example.app_smart_pan.ui.steps.fragments.FragmentStep;
+
+import com.example.app_smart_pan.recipes.steps.ui.fragments.FragmentStep;
 import com.example.services.beans.Recipe;
 
 

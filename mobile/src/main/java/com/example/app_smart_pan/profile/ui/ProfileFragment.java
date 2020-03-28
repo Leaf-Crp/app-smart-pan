@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.ui.profile;
+package com.example.app_smart_pan.profile.ui;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,17 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.app_smart_pan.Activity.MainActivity;
-import com.example.app_smart_pan.Activity.login.LoginActivity;
-import com.example.app_smart_pan.Activity.login.UpdateProfile;
-import com.example.app_smart_pan.Activity.login.UserProfile;
+import com.example.app_smart_pan.login.LoginActivity;
+import com.example.app_smart_pan.login.UpdateProfile;
+import com.example.app_smart_pan.login.UserProfile;
 import com.example.app_smart_pan.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

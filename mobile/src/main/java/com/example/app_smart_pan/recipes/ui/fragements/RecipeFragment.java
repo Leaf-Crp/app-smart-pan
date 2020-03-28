@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.ui.recipes.fragements;
+package com.example.app_smart_pan.recipes.ui.fragements;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.app_smart_pan.R;
-import com.example.app_smart_pan.Activity.StepActivity;
-import com.example.app_smart_pan.ui.recipes.adapter.ListRecipeAdapter;
+import com.example.app_smart_pan.recipes.steps.StepActivity;
+import com.example.app_smart_pan.recipes.ui.adapter.ListRecipeAdapter;
 import com.example.services.api.RecipesCall;
 import com.example.services.beans.Recipe;
 

@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.Activity;
+package com.example.app_smart_pan.recipes.steps;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.app_smart_pan.R;
-import com.example.app_smart_pan.ui.steps.SwipeAdapter;
+import com.example.app_smart_pan.recipes.steps.ui.SwipeAdapter;
 import com.example.services.beans.Recipe;
 
 import org.json.JSONObject;

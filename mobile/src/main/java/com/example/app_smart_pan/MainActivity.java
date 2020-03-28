@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.Activity;
+package com.example.app_smart_pan;
 
 import android.os.Bundle;
 import android.util.Log;

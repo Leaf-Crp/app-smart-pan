@@ -14,19 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.SplashScreenActivity">
+        <activity android:name=".splash.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.login.LoginActivity"/>
-        <activity android:name=".Activity.login.RegistrationActivity"/>
-        <activity android:name=".Activity.login.UpdateProfile"/>
-        <activity android:name=".Activity.login.PasswordActivity"/>
-        <activity android:name=".Activity.MainActivity"/>
-        <activity android:name=".Activity.StepActivity"/>
+        <activity android:name=".login.LoginActivity"/>
+        <activity android:name=".login.RegistrationActivity"/>
+        <activity android:name=".login.UpdateProfile"/>
+        <activity android:name=".login.PasswordActivity"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".recipes.steps.StepActivity"/>
     </application>
 
 </manifest>

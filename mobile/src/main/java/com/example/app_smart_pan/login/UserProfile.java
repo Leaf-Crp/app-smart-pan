@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.Activity.login;
+package com.example.app_smart_pan.login;
 
 
 public class UserProfile {

@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.ui.dashboard;
+package com.example.app_smart_pan.dashboard.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

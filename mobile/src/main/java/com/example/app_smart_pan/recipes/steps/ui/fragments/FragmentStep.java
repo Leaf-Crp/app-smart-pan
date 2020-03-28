@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.ui.steps.fragments;
+package com.example.app_smart_pan.recipes.steps.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.app_smart_pan.R;
-import com.example.app_smart_pan.ui.steps.adapter.ListIngredientAdapter;
+import com.example.app_smart_pan.recipes.steps.ui.adapter.ListIngredientAdapter;
 import com.example.services.beans.Step;
 
 public class FragmentStep extends Fragment {

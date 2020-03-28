@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.Activity.login;
+package com.example.app_smart_pan.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.app_smart_pan.Activity.MainActivity;
+import com.example.app_smart_pan.MainActivity;
 import com.example.app_smart_pan.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

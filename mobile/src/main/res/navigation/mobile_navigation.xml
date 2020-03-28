@@ -7,16 +7,16 @@
 
     <fragment
         android:id="@+id/navigation_recipes"
-        android:name="com.example.app_smart_pan.ui.recipes.fragements.RecipeFragment"
+        android:name="com.example.app_smart_pan.recipes.ui.fragements.RecipeFragment"
         tools:layout="@layout/fragment_recipes" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.app_smart_pan.ui.dashboard.DashboardFragment"
+        android:name="com.example.app_smart_pan.dashboard.ui.DashboardFragment"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.app_smart_pan.ui.profile.ProfileFragment"
+        android:name="com.example.app_smart_pan.profile.ui.ProfileFragment"
         tools:layout="@layout/fragment_profile" />
 </navigation>

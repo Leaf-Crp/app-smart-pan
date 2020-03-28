@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/spash_screen"
-    tools:context="com.example.app_smart_pan.Activity.login.UpdateProfile">
+    tools:context=".login.UpdateProfile">
 
     <ImageView
         android:id="@+id/ivProfileUpdate"
