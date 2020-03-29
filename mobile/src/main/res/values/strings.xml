@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Smart Pan</string>
     <string name="title_home">Recettes</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_profile">Profile</string>
