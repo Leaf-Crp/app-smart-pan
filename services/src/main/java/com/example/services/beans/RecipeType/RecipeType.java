@@ -1,7 +1,14 @@
-package com.example.services.beans;
+package com.example.services.beans.RecipeType;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class RecipeType {
+    @SerializedName("id")
+    @Expose
     private int id;
+    @SerializedName("label")
+    @Expose
     private String label;
 
     public int getId() {
