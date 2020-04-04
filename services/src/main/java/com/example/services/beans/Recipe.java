@@ -1,6 +1,8 @@
 package com.example.services.beans;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,9 +11,19 @@ public class Recipe implements Serializable {
     private int id;
     private int nbEtape;
     private int temps;
-    private String label;
+    private int recipeTypeId = 1;
+    private String label = null;
+    private Boolean isPrivate = false;
     private String image;
     private List<Step> steps;
+
+    public Recipe(String labelRecipe, Boolean isPrivateRecipe, Integer recipeTypeId){
+        label = labelRecipe;
+        isPrivate = isPrivateRecipe;
+        recipeTypeId = recipeTypeId;
+    }
+
+
 
     public List<Step> getSteps() {
         return steps;
@@ -49,4 +61,11 @@ public class Recipe implements Serializable {
         return image;
     }
 
+    public Boolean getPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(Boolean aPrivate) {
+        isPrivate = aPrivate;
+    }
 }
