@@ -7,5 +7,5 @@ import retrofit2.http.GET;
 
 public interface RecipeTypesCall {
     @GET("recipe_types")
-    Call<RecipeTypes> getReviews();
+    Call<RecipeTypes> getRecipeTypes();
 }
