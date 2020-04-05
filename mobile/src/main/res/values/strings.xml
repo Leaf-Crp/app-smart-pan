@@ -12,13 +12,7 @@
     <string name="label_recipe_type">Type de recette</string>
     <string name="label_user">Utilisateur</string>
     <string name="label_save">Enregistrer</string>
-
-    <string-array name="numbers">
-        <item>One</item>
-        <item>Two</item>
-        <item>Three</item>
-        <item>Four</item>
-        <item>Five</item>
-    </string-array>
+    <string name="label_browse">Parcourir</string>
+    <string name="label_add_recipe">Créer votre propre recette</string>
 
 </resources>

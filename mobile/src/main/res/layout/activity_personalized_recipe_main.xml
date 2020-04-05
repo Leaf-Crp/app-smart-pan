@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/solidCircle"
-tools:context=".recipes.personalized_recipe.PersonalizedRecipeActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/solidCircle"
+    tools:context=".recipes.personalized_recipe.PersonalizedRecipeActivity">
 
+    <include
+        android:id="@+id/rlHeader"
+        layout="@layout/header_personalized_recipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/etLabelRecipe"
+        app:layout_constraintBottom_toTopOf="@+id/etLabelRecipe"
+        app:layout_constraintTop_toBottomOf="@+id/etLabelRecipe"
+        app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0"/>
 
     <EditText
         android:id="@+id/etLabelRecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="@string/label_label"
         android:inputType="textPersonName"
@@ -25,65 +35,87 @@ tools:context=".recipes.personalized_recipe.PersonalizedRecipeActivity">
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spTypeRecipe"
+        app:layout_constraintTop_toTopOf="@+id/rlHeader"
         app:layout_constraintVertical_bias="0.307" />
 
     <Spinner
         android:id="@+id/spTypeRecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:hint="@string/label_recipe_type"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLabelRecipe"
-        app:layout_constraintVertical_bias="0.014"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/swIsPrivateRecipe"
+        app:layout_constraintTop_toTopOf="@+id/etLabelRecipe"
+        app:layout_constraintVertical_bias="0.14" />
 
     <Switch
         android:id="@+id/swIsPrivateRecipe"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/label_is_private"
         android:textColor="@color/colorAccent"
-        tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="137dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLabelRecipe"
-        app:layout_constraintVertical_bias="0.014"/>
+        app:layout_constraintTop_toBottomOf="@+id/llImage"
+        app:layout_constraintTop_toTopOf="@+id/spTypeRecipe"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <LinearLayout
+        android:id="@+id/llImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/swIsPrivateRecipe"
+        app:layout_constraintVertical_bias="0.25"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="288dp">
+
+        <ImageView
+            android:id="@+id/imgImageRecipe"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/btnUploadImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/label_browse" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:textColor="@color/white"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/colorAccent"
         android:text="@string/label_save"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swIsPrivateRecipe"
-        app:layout_constraintVertical_bias="0.424" />
-
+        app:layout_constraintTop_toBottomOf="@+id/llImage"
+        app:layout_constraintVertical_bias="0.869" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
