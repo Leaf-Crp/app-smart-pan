@@ -7,6 +7,7 @@
     <string name="twitterUsername">\@leafcorp</string>
     <string name="username">Username</string>
     <string name="label_label">Libellé</string>
+    <string name="label_duration">Durée</string>
     <string name="label_image">Image</string>
     <string name="label_is_private">Recette privée</string>
     <string name="label_recipe_type">Type de recette</string>

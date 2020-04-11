@@ -7,10 +7,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/btnAddStep"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:background="@drawable/plus" />
 
-    <TextView
-        android:id="@+id/textView"
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:id="@+id/lvSteps"
+        android:layout_height="match_parent" >
+
+    </ListView>
 </LinearLayout>
