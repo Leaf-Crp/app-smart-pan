@@ -33,27 +33,17 @@ public class ListStepsPersonalizedRecipeFragment extends Fragment {
     private Button btnAddStep;
     private String foo;
     private TextView vstup;
-    private Bundle savedState = null;
+    private ArrayList<Step> stepArrayList;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_personalized_recipe_steps_list, container, false);
         lvSteps = root.findViewById(R.id.lvSteps);
         btnAddStep = root.findViewById(R.id.btnAddStep);
-        ArrayList<Step> stepArrayList = new ArrayList<>();
-setRetainInstance(true);
+        setRetainInstance(true);
         Bundle bundle = getArguments();
-        if(savedInstanceState != null && savedState == null) {
-            savedState = savedInstanceState.getBundle("stav");
-            Log.d("INFO","create stav");
-        }
-        if(savedState != null) {
-            //vstup.setText(savedState.getCharSequence("vstup"));
-            Log.d("INFO","create vstup");
-
-        }
-        savedState = null;
-        if (bundle != null){
-            Step stringArray = (Step) bundle.getSerializable("stepToAdd");
-            stepArrayList.add(stringArray);
+        stepArrayList = new ArrayList<>();
+        if (bundle != null) {
+            stepArrayList = (ArrayList<Step>) bundle.getSerializable("stepToAdd");
         }
 
         context = container.getContext();
@@ -61,45 +51,22 @@ setRetainInstance(true);
         lvSteps.setAdapter(adapter);
 
         btnAddStep.setOnClickListener((view) -> {
-            FragmentManager frman = getFragmentManager();
-            FragmentTransaction ftran = frman.beginTransaction();
-            Fragment ffrag = new FormStepsPersonalizedRecipeFragment();
-            ftran.replace(R.id.nav_host_fragment, ffrag);
-            ftran.commit();
+            makeForm();
         });
         return root;
     }
 
-/*
-        Log.d("INFO","destroyed");
-        vstup = null;
+    /**
+     * forme objet step et l'ajoute à la liste view
+     */
+    private void makeForm() {
+        FragmentManager frman = getFragmentManager();
+        FragmentTransaction ftran = frman.beginTransaction();
+        Fragment ffrag = new FormStepsPersonalizedRecipeFragment();
+        Bundle args = new Bundle();
+        args.putSerializable("stepToAdd", stepArrayList);
+        ffrag.setArguments(args);
+        ftran.replace(R.id.nav_host_fragment, ffrag);
+        ftran.commit();
     }
-
-    @SuppressLint("SetTextI18n")
-    private Bundle saveState() {
-        Bundle state = new Bundle();
-        state.putCharSequence("vstup", "hello world");
-        Log.d("INFO","saved");
-
-        return state;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);         Log.d("INFO","saveinfostate");
-
-        outState.putBundle("stav", (savedState != null) ? savedState : saveState());
-    }
-
-
-
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        mMyCurrentPosition = savedInstanceState.getInt("mMyCurrentPosition");
-        // where mMyCurrentPosition should be a public value in your activity.
-    }
-*/
-
-
 }

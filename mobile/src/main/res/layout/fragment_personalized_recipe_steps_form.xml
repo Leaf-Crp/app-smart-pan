@@ -8,14 +8,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="61dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="124dp"
-            android:layout_height="86dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             app:srcCompat="@drawable/steps" />
 
         <TextView
@@ -57,6 +57,20 @@
             android:ems="10"
             android:hint="@string/label_duration"
             android:inputType="numberSigned" />
+
+        <Button
+            android:id="@+id/btnAddIngredient"
+            android:layout_width="match_parent"
+            android:background="@color/headings"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_height="wrap_content"
+            android:text="@string/add_ingredient" />
+
+        <ListView
+            android:id="@+id/lvAddIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="107dp" />
+
         <Button
             android:id="@+id/btnSaveStep"
             android:layout_width="match_parent"

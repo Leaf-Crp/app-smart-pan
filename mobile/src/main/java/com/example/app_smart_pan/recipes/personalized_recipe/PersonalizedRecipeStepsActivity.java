@@ -1,7 +1,10 @@
 package com.example.app_smart_pan.recipes.personalized_recipe;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
