@@ -1,19 +1,9 @@
 package com.example.app_smart_pan.recipes.personalized_recipe;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.util.Log;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import com.example.app_smart_pan.R;
 import com.example.services.beans.Recipe;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PersonalizedRecipeStepsActivity extends AppCompatActivity {
     private Recipe recipe;

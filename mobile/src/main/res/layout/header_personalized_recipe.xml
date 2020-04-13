@@ -25,12 +25,12 @@
 
             <ImageView
                 android:id="@+id/profilePic"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
                 android:layout_margin="9dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/circle"
-                android:padding="3dp"
+                android:padding="2dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/add" />
         </RelativeLayout>
@@ -41,11 +41,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgUser"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5sp"
+            android:layout_marginTop="2sp"
             android:fontFamily="sans-serif-light"
             android:text="@string/label_add_recipe"
             android:textColor="@color/white"
-            android:textSize="32sp" />
+            android:textSize="20sp" />
 
     </RelativeLayout>
 

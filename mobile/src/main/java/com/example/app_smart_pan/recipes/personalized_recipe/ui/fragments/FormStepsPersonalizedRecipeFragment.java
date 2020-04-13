@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -18,14 +17,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.app_smart_pan.R;
 import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.IngredientListAdapter;
+import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.PrerequisiteTypeListAdapter;
 import com.example.services.beans.Ingredient.Ingredient;
 import com.example.services.beans.Ingredient.Ingredients;
-import com.example.services.beans.RecipeType.RecipeType;
-import com.example.services.beans.RecipeType.RecipeTypes;
+import com.example.services.beans.PrerequisiteType.PrerequisiteType;
+import com.example.services.beans.PrerequisiteType.PrerequisiteTypes;
 import com.example.services.beans.Step;
 import com.example.services.repository.IngredientRepository;
+import com.example.services.repository.PrerequisiteTypeRepository;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -40,16 +40,24 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
     private EditText etDurationStep;
     private EditText etLabelStep;
     private Button btnAddIngredient;
+    private Button btnAddPrerequisite;
     private ListView lvAddIngredients;
+    private ListView lvAddPrerequisite;
     private ArrayList<Step> stepArrayList;
-    private IngredientRepository ingredientRepository;
+    private IngredientRepository ingredientRepository = new IngredientRepository();
+    private PrerequisiteTypeRepository prerequisiteTypeRepository= new PrerequisiteTypeRepository();
     private ArrayList<Ingredient> ingredients;
+    private ArrayList<PrerequisiteType> prerequisiteTypes;
 
-    SpinnerDialog spinnerDialog;
+    SpinnerDialog spinnerDialogIngredients;
+    SpinnerDialog spinnerDialogPrerequisiteTypes;
+
     private ArrayList<String> items = new ArrayList<>();
     private Context context;
     ArrayList<Ingredient> ingredientsArrayList;
-    IngredientListAdapter adapter;
+    IngredientListAdapter ingredientListAdapter;
+    ArrayList<PrerequisiteType> prerequisiteTypesArrayList;
+    PrerequisiteTypeListAdapter prerequisiteTypeListAdapter;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,19 +66,31 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
         etDurationStep = root.findViewById(R.id.etDurationStep);
         etLabelStep = root.findViewById(R.id.etLabelStep);
         lvAddIngredients = root.findViewById(R.id.lvAddIngredients);
+        lvAddPrerequisite = root.findViewById(R.id.lvAddPrerequisite);
+
         btnAddIngredient = root.findViewById(R.id.btnAddIngredient);
+        btnAddPrerequisite = root.findViewById(R.id.btnAddPrerequisite);
+
         Bundle bundle = getArguments();
         Button btnShow;
         context = container.getContext();
-        ingredientRepository = new IngredientRepository();
         ingredientsArrayList = new ArrayList<Ingredient>();
-        adapter = new IngredientListAdapter(context, R.layout.adapter_fragment_personalized_recipe_ingredients_list,
+        ingredientListAdapter = new IngredientListAdapter(context, R.layout.adapter_fragment_personalized_recipe_ingredients_list,
                 ingredientsArrayList);
-        lvAddIngredients.setAdapter(adapter);
+        lvAddIngredients.setAdapter(ingredientListAdapter);
+
+        prerequisiteTypesArrayList = new ArrayList<PrerequisiteType>();
+        prerequisiteTypeListAdapter = new PrerequisiteTypeListAdapter(context, R.layout.adapter_fragment_personalized_recipe_ingredients_list,
+                prerequisiteTypesArrayList);
+        lvAddPrerequisite.setAdapter(prerequisiteTypeListAdapter);
+
         loadFormElements();
 
         btnAddIngredient.setOnClickListener(view -> {
-            spinnerDialog.showSpinerDialog();
+            spinnerDialogIngredients.showSpinerDialog();
+        });
+        btnAddPrerequisite.setOnClickListener(view -> {
+            spinnerDialogPrerequisiteTypes.showSpinerDialog();
         });
 
         if (bundle != null) {
@@ -87,6 +107,7 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
      */
     private void saveStep() {
         Step step = new Step(etLabelStep.getText().toString(), Integer.parseInt(etDurationStep.getText().toString()));
+       // step.setIngredients(ingredients);
         stepArrayList.add(step);
         FragmentManager frman = getFragmentManager();
         FragmentTransaction ftran = frman.beginTransaction();
@@ -108,20 +129,39 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
             public void onResponse(Call<Ingredients> call, Response<Ingredients> response) {
                 ingredients = (ArrayList<Ingredient>) response.body().getIngredients();
                 ArrayList<String> stringIngredients = (ArrayList<String>) ingredients.stream().map(Ingredient::getLabel).collect(Collectors.toList());
-
-                spinnerDialog = new SpinnerDialog(getActivity(), stringIngredients, "Choisir un ingrédient");
-                spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
+                spinnerDialogIngredients = new SpinnerDialog(getActivity(), stringIngredients, "Choisir un ingrédient");
+                spinnerDialogIngredients.bindOnSpinerListener(new OnSpinerItemClick() {
                     @Override
                     public void onClick(String s, int i) {
                         ingredientsArrayList.add(ingredients.get(i));
-                        adapter.notifyDataSetChanged();
+                        ingredientListAdapter.notifyDataSetChanged();
                     }
                 });
-
             }
-
             @Override
             public void onFailure(Call<Ingredients> call, Throwable t) {
+                Log.d("DEBUG-MESSAGE", t.getMessage());
+            }
+        });
+
+        Call<PrerequisiteTypes> callPrerequis = prerequisiteTypeRepository.allPrerequisiteTypeQuery();
+        callPrerequis.enqueue(new Callback<PrerequisiteTypes>() {
+            @Override
+            public void onResponse(Call<PrerequisiteTypes> callPrerequis, Response<PrerequisiteTypes> response) {
+                prerequisiteTypes = (ArrayList<PrerequisiteType>) response.body().getPrerequisiteTypes();
+                ArrayList<String> stringPrerequisiteTypes = (ArrayList<String>) prerequisiteTypes.stream().map(PrerequisiteType::getLabel).collect(Collectors.toList());
+
+                spinnerDialogPrerequisiteTypes = new SpinnerDialog(getActivity(), stringPrerequisiteTypes, "Choisir un prérequis");
+                spinnerDialogPrerequisiteTypes.bindOnSpinerListener(new OnSpinerItemClick() {
+                    @Override
+                    public void onClick(String s, int i) {
+                        prerequisiteTypesArrayList.add(prerequisiteTypes.get(i));
+                        prerequisiteTypeListAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+            @Override
+            public void onFailure(Call<PrerequisiteTypes> callPrerequis, Throwable t) {
                 Log.d("DEBUG-MESSAGE", t.getMessage());
             }
         });
