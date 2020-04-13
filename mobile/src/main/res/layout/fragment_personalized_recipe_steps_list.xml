@@ -23,10 +23,26 @@
         android:text="Etapes de recette"
         android:textSize="22dp" />
 </LinearLayout>
+
     <ListView
-        android:layout_width="match_parent"
         android:id="@+id/lvSteps"
-        android:layout_height="match_parent" >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     </ListView>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom">
+    <Button
+        android:id="@+id/BtnSaveRecipe"
+        android:drawableLeft="@drawable/accept"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:textSize="13dp"
+        android:layout_height="wrap_content"
+        android:background="#ADCDDC39"
+        android:text="@string/validate_recipe" />
+    </RelativeLayout>
+
 </LinearLayout>

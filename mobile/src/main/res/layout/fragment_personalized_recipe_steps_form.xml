@@ -70,7 +70,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="7dp"
                 android:layout_marginLeft="5dp"
-
                 android:layout_weight="50"
                 android:orientation="vertical"
                 android:weightSum="50">
@@ -119,11 +118,14 @@
             </LinearLayout>
 
         </LinearLayout>
-
         <Button
             android:id="@+id/btnSaveStep"
+            android:drawableLeft="@drawable/accept"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
+            android:textSize="13dp"
             android:layout_height="wrap_content"
+            android:background="#ADCDDC39"
             android:text="@string/label_save" />
     </LinearLayout>
 

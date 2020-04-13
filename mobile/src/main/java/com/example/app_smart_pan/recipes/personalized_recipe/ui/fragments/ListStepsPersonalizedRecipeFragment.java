@@ -19,8 +19,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.app_smart_pan.R;
+import com.example.app_smart_pan.recipes.personalized_recipe.PersonalizedRecipeStepsActivity;
 import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.StepListAdapter;
-import com.example.services.beans.Step;
+import com.example.services.beans.StepRecipe.Step;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -34,11 +35,13 @@ public class ListStepsPersonalizedRecipeFragment extends Fragment {
     private String foo;
     private TextView vstup;
     private ArrayList<Step> stepArrayList;
+    private Button BtnSaveRecipe;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_personalized_recipe_steps_list, container, false);
         lvSteps = root.findViewById(R.id.lvSteps);
         btnAddStep = root.findViewById(R.id.btnAddStep);
+        BtnSaveRecipe = root.findViewById(R.id.BtnSaveRecipe);
         setRetainInstance(true);
         Bundle bundle = getArguments();
         stepArrayList = new ArrayList<>();
@@ -52,6 +55,11 @@ public class ListStepsPersonalizedRecipeFragment extends Fragment {
 
         btnAddStep.setOnClickListener((view) -> {
             makeForm();
+        });
+
+        BtnSaveRecipe.setOnClickListener((view) -> {
+            PersonalizedRecipeStepsActivity activity = (PersonalizedRecipeStepsActivity) getActivity();
+             activity.sendRecipeRequest(stepArrayList);
         });
         return root;
     }

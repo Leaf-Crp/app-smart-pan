@@ -34,22 +34,24 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:layout_weight="50">
 
         <TextView
             android:gravity="center"
-            android:text="TextView2"
+            android:layout_marginBottom="2dp"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/textView2"/>
+            android:drawableLeft="@drawable/fruitsandvegetables"
+            android:id="@+id/tvNbIngredients"/>
 
         <TextView
             android:gravity="center"
-            android:text="TextView3"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/textView3"
-            android:layout_below="@+id/textView2"/>
+            android:drawableLeft="@drawable/hourglass"
+            android:id="@+id/tvNbPrerequisite"
+            android:layout_below="@+id/tvNbIngredients"/>
     </LinearLayout>
 
 </LinearLayout>

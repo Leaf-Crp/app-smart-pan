@@ -17,5 +17,7 @@
     <string name="label_add_recipe">Créer votre propre recette</string>
     <string name="add_ingredient">Ajouter un ingrédient</string>
     <string name="add_prerequisite">Ajouter un prérequis</string>
+    <string name="validate_recipe">Valider la recette</string>
+    <string name="add_steps">Ajouter des étapes</string>
 
 </resources>

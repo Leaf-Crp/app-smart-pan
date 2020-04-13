@@ -22,7 +22,7 @@ import com.example.services.beans.Ingredient.Ingredient;
 import com.example.services.beans.Ingredient.Ingredients;
 import com.example.services.beans.PrerequisiteType.PrerequisiteType;
 import com.example.services.beans.PrerequisiteType.PrerequisiteTypes;
-import com.example.services.beans.Step;
+import com.example.services.beans.StepRecipe.Step;
 import com.example.services.repository.IngredientRepository;
 import com.example.services.repository.PrerequisiteTypeRepository;
 
@@ -45,19 +45,17 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
     private ListView lvAddPrerequisite;
     private ArrayList<Step> stepArrayList;
     private IngredientRepository ingredientRepository = new IngredientRepository();
-    private PrerequisiteTypeRepository prerequisiteTypeRepository= new PrerequisiteTypeRepository();
+    private PrerequisiteTypeRepository prerequisiteTypeRepository = new PrerequisiteTypeRepository();
     private ArrayList<Ingredient> ingredients;
     private ArrayList<PrerequisiteType> prerequisiteTypes;
-
-    SpinnerDialog spinnerDialogIngredients;
-    SpinnerDialog spinnerDialogPrerequisiteTypes;
-
+    private SpinnerDialog spinnerDialogIngredients;
+    private SpinnerDialog spinnerDialogPrerequisiteTypes;
     private ArrayList<String> items = new ArrayList<>();
     private Context context;
-    ArrayList<Ingredient> ingredientsArrayList;
-    IngredientListAdapter ingredientListAdapter;
-    ArrayList<PrerequisiteType> prerequisiteTypesArrayList;
-    PrerequisiteTypeListAdapter prerequisiteTypeListAdapter;
+    private ArrayList<Ingredient> ingredientsRecipe;
+    private IngredientListAdapter ingredientListAdapter;
+    private ArrayList<PrerequisiteType> prerequisiteRecipes;
+    private PrerequisiteTypeListAdapter prerequisiteTypeListAdapter;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,21 +65,19 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
         etLabelStep = root.findViewById(R.id.etLabelStep);
         lvAddIngredients = root.findViewById(R.id.lvAddIngredients);
         lvAddPrerequisite = root.findViewById(R.id.lvAddPrerequisite);
-
         btnAddIngredient = root.findViewById(R.id.btnAddIngredient);
         btnAddPrerequisite = root.findViewById(R.id.btnAddPrerequisite);
 
         Bundle bundle = getArguments();
-        Button btnShow;
         context = container.getContext();
-        ingredientsArrayList = new ArrayList<Ingredient>();
+        ingredientsRecipe = new ArrayList<Ingredient>();
         ingredientListAdapter = new IngredientListAdapter(context, R.layout.adapter_fragment_personalized_recipe_ingredients_list,
-                ingredientsArrayList);
+                ingredientsRecipe);
         lvAddIngredients.setAdapter(ingredientListAdapter);
 
-        prerequisiteTypesArrayList = new ArrayList<PrerequisiteType>();
-        prerequisiteTypeListAdapter = new PrerequisiteTypeListAdapter(context, R.layout.adapter_fragment_personalized_recipe_ingredients_list,
-                prerequisiteTypesArrayList);
+        prerequisiteRecipes = new ArrayList<PrerequisiteType>();
+        prerequisiteTypeListAdapter = new PrerequisiteTypeListAdapter(context, R.layout.adapter_fragment_personalized_recipe_prerequisite_types_list,
+                prerequisiteRecipes);
         lvAddPrerequisite.setAdapter(prerequisiteTypeListAdapter);
 
         loadFormElements();
@@ -106,8 +102,8 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
      * forme objet step et l'ajoute à la liste view
      */
     private void saveStep() {
-        Step step = new Step(etLabelStep.getText().toString(), Integer.parseInt(etDurationStep.getText().toString()));
-       // step.setIngredients(ingredients);
+        Step step = new Step(etLabelStep.getText().toString(), Integer.parseInt(etDurationStep.getText().toString()),
+                ingredientsRecipe, prerequisiteRecipes);
         stepArrayList.add(step);
         FragmentManager frman = getFragmentManager();
         FragmentTransaction ftran = frman.beginTransaction();
@@ -133,11 +129,12 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
                 spinnerDialogIngredients.bindOnSpinerListener(new OnSpinerItemClick() {
                     @Override
                     public void onClick(String s, int i) {
-                        ingredientsArrayList.add(ingredients.get(i));
+                        ingredientsRecipe.add(ingredients.get(i));
                         ingredientListAdapter.notifyDataSetChanged();
                     }
                 });
             }
+
             @Override
             public void onFailure(Call<Ingredients> call, Throwable t) {
                 Log.d("DEBUG-MESSAGE", t.getMessage());
@@ -155,11 +152,12 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
                 spinnerDialogPrerequisiteTypes.bindOnSpinerListener(new OnSpinerItemClick() {
                     @Override
                     public void onClick(String s, int i) {
-                        prerequisiteTypesArrayList.add(prerequisiteTypes.get(i));
+                        prerequisiteRecipes.add(prerequisiteTypes.get(i));
                         prerequisiteTypeListAdapter.notifyDataSetChanged();
                     }
                 });
             }
+
             @Override
             public void onFailure(Call<PrerequisiteTypes> callPrerequis, Throwable t) {
                 Log.d("DEBUG-MESSAGE", t.getMessage());

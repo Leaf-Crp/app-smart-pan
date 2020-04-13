@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.app_smart_pan.R;
-import com.example.services.beans.Step;
+import com.example.services.beans.StepRecipe.Step;
 
 import java.util.ArrayList;
 
@@ -37,18 +37,17 @@ public class StepListAdapter extends ArrayAdapter<Step> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         String label = getItem(position).getLabel();
         Integer duration = getItem(position).getDuration();
-
-        Step step = new Step(label, duration);
+        Integer nbIngredients = getItem(position).getIngredients().size();
+        Integer nbPrerequisite = getItem(position).getPrerequisiteTypes().size();
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mRessource, parent, false);
-        //return super.getView(position, convertView, parent);
-        TextView tvName = (TextView) convertView.findViewById(R.id.textView1);
-        TextView tvBirtday = (TextView) convertView.findViewById(R.id.textView2);
-        TextView tvSex = (TextView) convertView.findViewById(R.id.textView3);
-        tvName.setText(label);
-        tvBirtday.setText(label.toString());
-        tvSex.setText(label);
+        TextView tvLabel = (TextView) convertView.findViewById(R.id.textView1);
+        TextView tvNbIngredients = (TextView) convertView.findViewById(R.id.tvNbIngredients);
+        TextView tvPrerequisites = (TextView) convertView.findViewById(R.id.tvNbPrerequisite);
+        tvLabel.setText(label);
+        tvNbIngredients.setText(String.valueOf(nbIngredients) + " Ingredients");
+        tvPrerequisites.setText(String.valueOf(nbPrerequisite) + " Prérequis");
 
         return convertView;
 
