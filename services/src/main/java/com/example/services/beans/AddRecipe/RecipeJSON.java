@@ -1,21 +1,25 @@
 package com.example.services.beans.AddRecipe;
 
+import com.example.services.beans.StepRecipe.Step;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class RecipeJSON implements Serializable {
     private String label;
     private Boolean is_private;
     private String image;
     private Integer id_user;
-    private  Integer id_recipe_type;
+    private Integer id_recipe_type;
+    private List<Step> steps;
 
-
-    public RecipeJSON(String label, Boolean is_private, String image, Integer id_user, Integer id_recipe_type) {
+    public RecipeJSON(String label, Boolean is_private, String image, Integer id_user, Integer id_recipe_type, List<Step> steps) {
         this.label = label;
         this.is_private = is_private;
         this.image = image;
         this.id_user = id_user;
         this.id_recipe_type = id_recipe_type;
+        this.steps = steps;
     }
 
     public String getLabel() {

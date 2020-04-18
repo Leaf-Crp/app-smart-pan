@@ -102,6 +102,16 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
      * forme objet step et l'ajoute à la liste view
      */
     private void saveStep() {
+        Integer i =0;
+        for(PrerequisiteType prerequisiteType : prerequisiteRecipes){
+            //récupérer le détail associé
+            //setter l'object en question
+        }
+        prerequisiteTypeListAdapter.getItem(0);
+
+        for (PrerequisiteType ingredient : prerequisiteRecipes) {
+            Log.d("DEBYG", (Integer.toString(ingredient.getId())));
+        }
         Step step = new Step(etLabelStep.getText().toString(), Integer.parseInt(etDurationStep.getText().toString()),
                 ingredientsRecipe, prerequisiteRecipes);
         stepArrayList.add(step);

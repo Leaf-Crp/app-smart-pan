@@ -10,7 +10,8 @@ import retrofit2.Retrofit;
 public class RecipeRepository extends BaseRepository {
 
     public Call<RecipeJSON> saveRecipe(Recipe recipe) {
-        RecipeJSON recipeJson = new RecipeJSON(recipe.getLabel(), recipe.getPrivate(), "you", 1, 1);
+        RecipeJSON recipeJson = new RecipeJSON(recipe.getLabel(), recipe.getPrivate(), "you",
+                1,1, recipe.getSteps());
         Retrofit retrofit = this.getRetrofit();
         RecipesCall recipesCall = retrofit.create(RecipesCall.class);
         Call<RecipeJSON> call = recipesCall.saveRecipe(recipeJson);

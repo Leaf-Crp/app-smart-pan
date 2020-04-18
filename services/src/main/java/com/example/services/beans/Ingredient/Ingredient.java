@@ -14,6 +14,10 @@ public class Ingredient {
     @Expose
     private String image;
 
+    private int quantity;
+
+    private StepIngredient stepIngredient;
+
     public Ingredient(int id, String label) {
         this.id = id;
         this.label = label;
@@ -41,6 +45,22 @@ public class Ingredient {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public StepIngredient getStepIngredient() {
+        return stepIngredient;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setStepIngredient(StepIngredient stepIngredient) {
+        this.stepIngredient = stepIngredient;
     }
 
     /**
