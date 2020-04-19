@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "959375853064",
+    "firebase_url": "https://smartpan-85aca.firebaseio.com",
+    "project_id": "smartpan-85aca",
+    "storage_bucket": "smartpan-85aca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959375853064:android:51c98f5438a9cd93a273bd",
+        "android_client_info": {
+          "package_name": "com.example.app_smart_pan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959375853064-kn68vg26hgnkhuffpj0hh9ll43ce052d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9wGeZzJIHmNOd55PVCEbvzv4R9CSad5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "959375853064-kn68vg26hgnkhuffpj0hh9ll43ce052d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
