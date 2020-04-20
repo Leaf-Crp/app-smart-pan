@@ -39,7 +39,7 @@ public class PrerequisiteTypeListAdapter extends ArrayAdapter<PrerequisiteType> 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mRessource, parent, false);
         TextView tvDetailsPrerequisite = (TextView) convertView.findViewById(R.id.textView1);
-
+        tvDetailsPrerequisite.setText(label);
        // tvDetailsPrerequisite.setId(code);
 
         return convertView;
