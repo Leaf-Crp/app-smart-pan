@@ -1,7 +1,7 @@
-package com.example.services.beans.StepRecipe;
+package com.example.services.beans.steprecipe;
 
-import com.example.services.beans.Ingredient.Ingredient;
-import com.example.services.beans.PrerequisiteType.PrerequisiteType;
+import com.example.services.beans.ingredient.Ingredient;
+import com.example.services.beans.prerequisitetype.PrerequisiteType;
 
 import java.util.List;
 

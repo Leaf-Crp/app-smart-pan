@@ -1,4 +1,4 @@
-package com.example.services.beans.RecipeType;
+package com.example.services.beans.recipetype;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

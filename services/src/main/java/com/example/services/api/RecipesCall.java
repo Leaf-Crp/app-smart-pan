@@ -1,6 +1,6 @@
 package com.example.services.api;
 
-import com.example.services.beans.AddRecipe.RecipeJSON;
+import com.example.services.beans.addrecipe.RecipeJSON;
 import com.example.services.beans.Recipe;
 
 import java.util.List;

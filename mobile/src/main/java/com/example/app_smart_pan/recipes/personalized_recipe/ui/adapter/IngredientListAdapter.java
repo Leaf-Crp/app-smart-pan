@@ -11,8 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.app_smart_pan.R;
-import com.example.services.beans.Ingredient.Ingredient;
-import com.example.services.beans.Step;
+import com.example.services.beans.ingredient.Ingredient;
 
 import java.util.ArrayList;
 

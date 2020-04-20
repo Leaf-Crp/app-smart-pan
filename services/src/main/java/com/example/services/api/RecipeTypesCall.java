@@ -1,6 +1,6 @@
 package com.example.services.api;
 
-import com.example.services.beans.RecipeType.RecipeTypes;
+import com.example.services.beans.recipetype.RecipeTypes;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

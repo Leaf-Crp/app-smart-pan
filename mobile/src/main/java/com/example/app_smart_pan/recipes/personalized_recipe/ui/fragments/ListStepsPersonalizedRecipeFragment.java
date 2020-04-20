@@ -1,16 +1,12 @@
 package com.example.app_smart_pan.recipes.personalized_recipe.ui.fragments;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,12 +17,9 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.app_smart_pan.R;
 import com.example.app_smart_pan.recipes.personalized_recipe.PersonalizedRecipeStepsActivity;
 import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.StepListAdapter;
-import com.example.services.beans.StepRecipe.Step;
-
-import org.jetbrains.annotations.NotNull;
+import com.example.services.beans.steprecipe.Step;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ListStepsPersonalizedRecipeFragment extends Fragment {
     private ListView lvSteps;

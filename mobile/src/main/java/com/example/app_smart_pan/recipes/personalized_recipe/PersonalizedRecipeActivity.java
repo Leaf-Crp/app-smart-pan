@@ -15,9 +15,9 @@ import android.widget.Switch;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app_smart_pan.R;
-import com.example.services.beans.AddRecipe.Recipe;
-import com.example.services.beans.RecipeType.RecipeType;
-import com.example.services.beans.RecipeType.RecipeTypes;
+import com.example.services.beans.addrecipe.Recipe;
+import com.example.services.beans.recipetype.RecipeType;
+import com.example.services.beans.recipetype.RecipeTypes;
 import com.example.services.repository.RecipeTypeRepository;
 
 import java.util.ArrayList;

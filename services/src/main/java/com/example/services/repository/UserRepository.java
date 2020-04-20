@@ -1,8 +1,8 @@
 package com.example.services.repository;
 
 import com.example.services.api.UserCall;
-import com.example.services.beans.User.UserJSON;
-import com.example.services.beans.User.UserResponse;
+import com.example.services.beans.user.UserJSON;
+import com.example.services.beans.user.UserResponse;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;

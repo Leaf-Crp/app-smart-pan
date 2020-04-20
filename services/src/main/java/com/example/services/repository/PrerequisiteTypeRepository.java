@@ -1,12 +1,9 @@
 package com.example.services.repository;
 
-import com.example.services.api.IngredientsCall;
 import com.example.services.api.PrerequisiteTypesCall;
 import com.example.services.api.config.Config;
-import com.example.services.beans.Ingredient.Ingredient;
-import com.example.services.beans.Ingredient.Ingredients;
-import com.example.services.beans.PrerequisiteType.PrerequisiteType;
-import com.example.services.beans.PrerequisiteType.PrerequisiteTypes;
+import com.example.services.beans.prerequisitetype.PrerequisiteType;
+import com.example.services.beans.prerequisitetype.PrerequisiteTypes;
 
 import java.util.ArrayList;
 

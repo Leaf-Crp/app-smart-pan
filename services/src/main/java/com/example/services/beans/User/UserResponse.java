@@ -1,4 +1,4 @@
-package com.example.services.beans.User;
+package com.example.services.beans.user;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

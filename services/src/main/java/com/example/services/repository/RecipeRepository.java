@@ -1,8 +1,8 @@
 package com.example.services.repository;
 
 import com.example.services.api.RecipesCall;
-import com.example.services.beans.AddRecipe.Recipe;
-import com.example.services.beans.AddRecipe.RecipeJSON;
+import com.example.services.beans.addrecipe.Recipe;
+import com.example.services.beans.addrecipe.RecipeJSON;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;

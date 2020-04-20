@@ -6,11 +6,9 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app_smart_pan.R;
-import com.example.services.api.RecipesCall;
-import com.example.services.api.config.Config;
-import com.example.services.beans.AddRecipe.Recipe;
-import com.example.services.beans.AddRecipe.RecipeJSON;
-import com.example.services.beans.StepRecipe.Step;
+import com.example.services.beans.addrecipe.Recipe;
+import com.example.services.beans.addrecipe.RecipeJSON;
+import com.example.services.beans.steprecipe.Step;
 import com.example.services.repository.RecipeRepository;
 
 import java.util.ArrayList;
@@ -18,8 +16,6 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PersonalizedRecipeStepsActivity extends AppCompatActivity {
     private Recipe recipe;

@@ -1,8 +1,7 @@
 package com.example.services.api;
 
-import com.example.services.beans.AddRecipe.RecipeJSON;
-import com.example.services.beans.User.UserJSON;
-import com.example.services.beans.User.UserResponse;
+import com.example.services.beans.user.UserJSON;
+import com.example.services.beans.user.UserResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

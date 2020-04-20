@@ -2,8 +2,8 @@ package com.example.services.repository;
 
 import com.example.services.api.IngredientsCall;
 import com.example.services.api.config.Config;
-import com.example.services.beans.Ingredient.Ingredient;
-import com.example.services.beans.Ingredient.Ingredients;
+import com.example.services.beans.ingredient.Ingredient;
+import com.example.services.beans.ingredient.Ingredients;
 
 import java.util.ArrayList;
 

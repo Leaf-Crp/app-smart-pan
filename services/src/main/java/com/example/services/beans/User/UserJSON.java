@@ -1,4 +1,4 @@
-package com.example.services.beans.User;
+package com.example.services.beans.user;
 
 public class UserJSON {
     private String email;

@@ -1,7 +1,7 @@
-package com.example.services.beans.AddRecipe;
+package com.example.services.beans.addrecipe;
 
 
-import com.example.services.beans.StepRecipe.Step;
+import com.example.services.beans.steprecipe.Step;
 
 import java.io.Serializable;
 import java.util.List;

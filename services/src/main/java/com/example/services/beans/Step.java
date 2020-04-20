@@ -11,11 +11,6 @@ public class Step implements Serializable {
     private int duration;
     private List<Ingredients> ingredients;
 
-    public Step(String label, int duration) {
-        this.label = label;
-        this.duration = duration;
-    }
-
     public int getId() {
         return id;
     }

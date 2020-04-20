@@ -1,4 +1,4 @@
-package com.example.services.beans.Ingredient;
+package com.example.services.beans.ingredient;
 
 public class StepIngredient {
     private int quantity;

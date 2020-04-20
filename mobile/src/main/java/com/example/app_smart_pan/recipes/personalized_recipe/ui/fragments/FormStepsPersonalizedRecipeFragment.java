@@ -18,11 +18,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.app_smart_pan.R;
 import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.IngredientListAdapter;
 import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.PrerequisiteTypeListAdapter;
-import com.example.services.beans.Ingredient.Ingredient;
-import com.example.services.beans.Ingredient.Ingredients;
-import com.example.services.beans.PrerequisiteType.PrerequisiteType;
-import com.example.services.beans.PrerequisiteType.PrerequisiteTypes;
-import com.example.services.beans.StepRecipe.Step;
+import com.example.services.beans.ingredient.Ingredient;
+import com.example.services.beans.ingredient.Ingredients;
+import com.example.services.beans.prerequisitetype.PrerequisiteType;
+import com.example.services.beans.prerequisitetype.PrerequisiteTypes;
+import com.example.services.beans.steprecipe.Step;
 import com.example.services.repository.IngredientRepository;
 import com.example.services.repository.PrerequisiteTypeRepository;
 

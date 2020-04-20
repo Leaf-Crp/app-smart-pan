@@ -1,7 +1,5 @@
-package com.example.services.beans.User;
+package com.example.services.beans.user;
 
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 public class User {
     private String email;
