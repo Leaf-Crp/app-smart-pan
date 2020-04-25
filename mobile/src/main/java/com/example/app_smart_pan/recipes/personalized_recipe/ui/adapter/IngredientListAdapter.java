@@ -1,10 +1,14 @@
 package com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,7 +24,7 @@ public class IngredientListAdapter extends ArrayAdapter<Ingredient> {
 
     private Context mContext;
     private int mRessource;
-
+    private TextView tvQuantity;
     public IngredientListAdapter(Context context,
                            int ressource, ArrayList<Ingredient> objects) {
         super(context, ressource, objects);
@@ -38,10 +42,21 @@ public class IngredientListAdapter extends ArrayAdapter<Ingredient> {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mRessource, parent, false);
         //return super.getView(position, convertView, parent);
-        TextView tvName = (TextView) convertView.findViewById(R.id.textView1);
+        final TextView tvName = (TextView) convertView.findViewById(R.id.textView1);
+         tvQuantity = (EditText) convertView.findViewById(R.id.tvQuantity);
+
         tvName.setText(label);
 
         return convertView;
 
     }
+
+    public String getData()
+    {
+        String s;
+        s=tvQuantity.getText().toString();
+        return s;
+    }
+
+
 }

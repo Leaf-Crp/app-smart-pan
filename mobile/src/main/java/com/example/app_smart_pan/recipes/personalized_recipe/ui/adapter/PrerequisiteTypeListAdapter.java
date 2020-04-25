@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ public class PrerequisiteTypeListAdapter extends ArrayAdapter<PrerequisiteType> 
 
     private Context mContext;
     private int mRessource;
+    private EditText tvDetailsPrerequisite;
 
     public PrerequisiteTypeListAdapter(Context context,
                                        int ressource, ArrayList<PrerequisiteType> objects) {
@@ -44,8 +46,4 @@ public class PrerequisiteTypeListAdapter extends ArrayAdapter<PrerequisiteType> 
 
         return convertView;
     }
-    public int getQuantity(){
-        return 12;
-    }
-
 }

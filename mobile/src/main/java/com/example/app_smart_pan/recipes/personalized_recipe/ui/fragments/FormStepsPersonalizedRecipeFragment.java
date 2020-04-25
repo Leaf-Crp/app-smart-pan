@@ -102,13 +102,25 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
      * forme objet step et l'ajoute à la liste view
      */
     private void saveStep() {
-
-        for (PrerequisiteType ingredient : prerequisiteRecipes) {
-            Log.d("DEBYG", (Integer.toString(ingredient.getId())));
+        for (int i = 0; i < prerequisiteRecipes.size(); i++) {
+            View view = lvAddPrerequisite.getChildAt(i);
+            EditText editText = view.findViewById(R.id.etDetailsPrerequisite);
+            Float detail = Float.parseFloat(String.valueOf(editText.getText()));
+            prerequisiteRecipes.get(i).setDetail(detail);
         }
+
+        for (int i = 0; i < ingredientsRecipe.size(); i++) {
+            View view = lvAddIngredients.getChildAt(i);
+            EditText editText = view.findViewById(R.id.tvQuantity);
+            int quantity = (Integer.parseInt(editText.getText().toString()));
+            ingredientsRecipe.get(i).setQuantity(quantity);
+        }
+
+
         Step step = new Step(etLabelStep.getText().toString(), Integer.parseInt(etDurationStep.getText().toString()),
                 ingredientsRecipe, prerequisiteRecipes);
         stepArrayList.add(step);
+
         FragmentManager frman = getFragmentManager();
         FragmentTransaction ftran = frman.beginTransaction();
         Fragment ffrag = new ListStepsPersonalizedRecipeFragment();
@@ -130,6 +142,7 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
                 ingredients = (ArrayList<Ingredient>) response.body().getIngredients();
                 ArrayList<String> stringIngredients = (ArrayList<String>) ingredients.stream().map(Ingredient::getLabel).collect(Collectors.toList());
                 spinnerDialogIngredients = new SpinnerDialog(getActivity(), stringIngredients, "Choisir un ingrédient");
+
                 spinnerDialogIngredients.bindOnSpinerListener(new OnSpinerItemClick() {
                     @Override
                     public void onClick(String s, int i) {

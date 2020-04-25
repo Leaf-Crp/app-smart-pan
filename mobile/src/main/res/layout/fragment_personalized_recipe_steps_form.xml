@@ -89,7 +89,7 @@
                     android:id="@+id/lvAddIngredients"
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
-                    android:layout_weight="50" />
+                   />
             </LinearLayout>
 
             <LinearLayout

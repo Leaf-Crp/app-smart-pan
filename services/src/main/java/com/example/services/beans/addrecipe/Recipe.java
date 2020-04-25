@@ -50,6 +50,15 @@ public class Recipe implements Serializable {
         return isPrivate;
     }
 
+
+    public int getRecipeTypeId() {
+        return recipeTypeId;
+    }
+
+    public void setRecipeTypeId(int recipeTypeId) {
+        this.recipeTypeId = recipeTypeId;
+    }
+
     public void setPrivate(Boolean aPrivate) {
         isPrivate = aPrivate;
     }
