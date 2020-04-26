@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#161616"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <RelativeLayout
+        android:id="@+id/rlHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/rouge"
+        android:paddingBottom="5dp"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:id="@+id/imgUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/circle_border">
+
+            <ImageView
+                android:id="@+id/profilePic"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_margin="9dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/circle"
+                android:padding="2dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/list" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgUser"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2sp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/list_personnal_recipes"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="24dp"
+        android:paddingLeft="24dp"
+        android:paddingBottom="24dp"
+        android:paddingTop="8dp"
+
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnAddPersonalizedRecipe"
+            android:layout_width="150dp"
+            android:layout_height="32dp"
+            android:background="@color/rouge"
+            android:drawableLeft="@drawable/draw"
+            android:text="@string/label_create_own_recipe"
+            android:textColor="@color/white"
+            android:textSize="8sp" />
+
+        <ListView
+            android:id="@+id/lvListRecipe"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="12dp"/>
+    </LinearLayout>
+</LinearLayout>

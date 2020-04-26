@@ -16,8 +16,10 @@
     <string name="label_browse">Parcourir</string>
     <string name="label_add_recipe">Créer votre propre recette</string>
     <string name="add_ingredient">Ajouter un ingrédient</string>
+    <string name="list_personnal_recipes">Mes recettes</string>
     <string name="add_prerequisite">Ajouter un prérequis</string>
     <string name="validate_recipe">Valider la recette</string>
     <string name="add_steps">Ajouter des étapes</string>
+    <string name="label_create_own_recipe">Créer ma propre recette</string>
 
 </resources>

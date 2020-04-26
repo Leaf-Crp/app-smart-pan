@@ -2,6 +2,7 @@ package com.example.services.api;
 
 import com.example.services.beans.addrecipe.RecipeJSON;
 import com.example.services.beans.Recipe;
+import com.example.services.beans.recipe.Recipes;
 
 import java.util.List;
 
@@ -14,6 +15,9 @@ public interface RecipesCall {
 
     @GET("recipes")
     Call<List<Recipe>> allRecipes();
+
+    @GET("recipes/users")
+    Call<Recipes> ownRecipes();
 
     @POST("/recipes")
     Call<RecipeJSON> saveRecipe(@Body RecipeJSON transformRecipeToRecipeJSONRequest);

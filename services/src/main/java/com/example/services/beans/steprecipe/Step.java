@@ -2,7 +2,9 @@ package com.example.services.beans.steprecipe;
 
 import com.example.services.beans.ingredient.Ingredient;
 import com.example.services.beans.prerequisitetype.PrerequisiteType;
-
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 import java.util.List;
 
 public class Step {
@@ -51,7 +53,7 @@ public class Step {
         this.ingredients = ingredients;
     }
 
-    public List<PrerequisiteType> getPrerequisiteTypes(){
+    public List<PrerequisiteType> getPrerequisiteTypes() {
         return prerequisiteTypes;
     }
 

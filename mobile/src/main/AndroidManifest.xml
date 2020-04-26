@@ -31,6 +31,7 @@
         <activity android:name=".recipes.steps.StepActivity"/>
         <activity android:name=".recipes.personalized_recipe.PersonalizedRecipeStepsActivity"/>
         <activity android:name=".recipes.personalized_recipe.PersonalizedRecipeActivity"/>
+        <activity android:name=".recipes.personalized_recipe.ListPersonalizedRecipeActivity"/>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.app_smart_pan.recipes.personalized_recipe;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -29,7 +30,7 @@ public class PersonalizedRecipeStepsActivity extends AppCompatActivity {
         recipe = (Recipe) getIntent().getSerializableExtra("RECIPE");
     }
 
-    public int sendRecipeRequest(ArrayList<Step> stepArrayList) {
+    public void sendRecipeRequest(ArrayList<Step> stepArrayList) {
         recipe.setSteps(stepArrayList);
         Call<RecipeJSON> call = recipeRepository.saveRecipe(recipe);
         call.enqueue(new Callback<RecipeJSON>() {
@@ -42,7 +43,12 @@ public class PersonalizedRecipeStepsActivity extends AppCompatActivity {
             public void onFailure(Call<RecipeJSON> call, Throwable t) {
                 Log.d("response ok", t.getMessage());
             }
-        });
-        return 1;
+        }); //finish();
+
+
+      //  Intent intent = new Intent();
+      //  intent.setClass(getApplicationContext(), ListPersonalizedRecipeActivity.class);
+      ///  startActivity(intent);
+
     }
 }

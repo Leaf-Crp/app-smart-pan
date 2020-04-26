@@ -1,6 +1,7 @@
 package com.example.app_smart_pan.recipes.personalized_recipe.ui.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.app_smart_pan.R;
+import com.example.app_smart_pan.recipes.personalized_recipe.ListPersonalizedRecipeActivity;
 import com.example.app_smart_pan.recipes.personalized_recipe.PersonalizedRecipeStepsActivity;
 import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.StepListAdapter;
 import com.example.services.beans.steprecipe.Step;
@@ -53,6 +55,15 @@ public class ListStepsPersonalizedRecipeFragment extends Fragment {
         BtnSaveRecipe.setOnClickListener((view) -> {
             PersonalizedRecipeStepsActivity activity = (PersonalizedRecipeStepsActivity) getActivity();
              activity.sendRecipeRequest(stepArrayList);
+
+          /*  Intent i = new Intent(activity, ListPersonalizedRecipeActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);*/
+            Intent intent = new Intent();
+            intent.setClass(getContext(), ListPersonalizedRecipeActivity.class);
+            startActivity(intent);
+
         });
         return root;
     }
