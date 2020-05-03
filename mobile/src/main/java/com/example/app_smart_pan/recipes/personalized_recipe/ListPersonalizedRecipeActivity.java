@@ -23,8 +23,6 @@ public class ListPersonalizedRecipeActivity extends AppCompatActivity {
     private Button btnAddPersonalizedRecipe;
     private RecipeRepository recipeRepository;
 
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_personalized_recipe);
@@ -34,7 +32,7 @@ public class ListPersonalizedRecipeActivity extends AppCompatActivity {
         btnAddPersonalizedRecipe.setOnClickListener(view -> startActivity(new Intent(ListPersonalizedRecipeActivity.this, PersonalizedRecipeActivity.class)));
         //recupérer ses own recipes
         recipeRepository = new RecipeRepository();
-getRecipes();
+        getRecipes();
         //afficher ds ladzpter
     }
 
@@ -55,5 +53,4 @@ getRecipes();
             }
         });
     }
-
 }

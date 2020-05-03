@@ -16,7 +16,7 @@ public class PrerequisiteType {
     private String code;
     @SerializedName("detail")
     @Expose
-    private Float detail;
+    private Double detail;
 
     public PrerequisiteType(int id, String label, String code) {
         this.id = id;
@@ -48,11 +48,11 @@ public class PrerequisiteType {
         this.code = code;
     }
 
-    public Float getDetail() {
+    public Double getDetail() {
         return detail;
     }
 
-    public void setDetail(Float detail) {
+    public void setDetail(Double detail) {
         this.detail = detail;
     }
 

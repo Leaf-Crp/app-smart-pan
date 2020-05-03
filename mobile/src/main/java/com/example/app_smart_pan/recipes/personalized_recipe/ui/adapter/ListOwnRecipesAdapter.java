@@ -1,14 +1,22 @@
 package com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.example.app_smart_pan.R;
+import com.example.services.api.config.Config;
 import com.example.services.beans.recipe.Recipe;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +49,7 @@ public class ListOwnRecipesAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if(convertView == null){
+        if (convertView == null) {
             convertView = View.inflate(context, R.layout.card_recipe_item, null);
         }
 
@@ -52,11 +60,26 @@ public class ListOwnRecipesAdapter extends BaseAdapter {
 
         Recipe recipe = recipes.get(position);
 
-        int resourceId = context.getResources().getIdentifier(recipe.getImage(), "drawable", context.getPackageName());
-        imageView.setImageResource(resourceId);
+        //int resourceId = context.getResources().getIdentifier(recipe.getImage(), "drawable", context.getPackageName());
+      //  imageView.setImageResource(resourceId);
+
+        String imageUrl = Config.getUrl() + recipe.getImage();
+        Picasso.get().load(imageUrl).into(imageView, new Callback() {
+            @Override
+            public void onSuccess() {
+                Log.d("IMAGE", "OKOK");
+            }
+
+            @Override
+            public void onError(Exception e) {
+                String imageDefaultUrl = Config.getUrl() + "public/uploads/default.png";
+                Picasso.get().load(imageDefaultUrl).into(imageView);
+            }
+        });
+
         textViewLabel.setText(recipe.getLabel());
-       // textViewEtapes.setText(""+recipe.getNbEtape());
-      //  textViewTemps.setText(""+recipe.getTemps());
+         textViewEtapes.setText(""+recipe.getNbEtape());
+          textViewTemps.setText(""+recipe.getTemps());
 
         return convertView;
     }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RecipeJSON implements Serializable {
     private String label;
-    private Boolean is_private;
+    private Integer is_private = 0;
     private String image;
     private Integer id_user;
     private Integer id_recipe_type;
@@ -15,7 +15,9 @@ public class RecipeJSON implements Serializable {
 
     public RecipeJSON(String label, Boolean is_private, String image, Integer id_user, Integer id_recipe_type, List<Step> steps) {
         this.label = label;
-        this.is_private = is_private;
+        if(is_private){
+            this.is_private = 1;
+        }
         this.image = image;
         this.id_user = id_user;
         this.id_recipe_type = id_recipe_type;
@@ -30,11 +32,11 @@ public class RecipeJSON implements Serializable {
         this.label = label;
     }
 
-    public Boolean getIs_private() {
+    public Integer getIs_private() {
         return is_private;
     }
 
-    public void setIs_private(Boolean is_private) {
+    public void setIs_private(Integer is_private) {
         this.is_private = is_private;
     }
 

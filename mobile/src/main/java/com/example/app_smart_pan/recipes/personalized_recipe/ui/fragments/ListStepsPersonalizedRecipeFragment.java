@@ -1,8 +1,11 @@
 package com.example.app_smart_pan.recipes.personalized_recipe.ui.fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +22,7 @@ import com.example.app_smart_pan.R;
 import com.example.app_smart_pan.recipes.personalized_recipe.ListPersonalizedRecipeActivity;
 import com.example.app_smart_pan.recipes.personalized_recipe.PersonalizedRecipeStepsActivity;
 import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.StepListAdapter;
+import com.example.services.beans.addrecipe.Recipe;
 import com.example.services.beans.steprecipe.Step;
 
 import java.util.ArrayList;
@@ -53,17 +57,7 @@ public class ListStepsPersonalizedRecipeFragment extends Fragment {
         });
 
         BtnSaveRecipe.setOnClickListener((view) -> {
-            PersonalizedRecipeStepsActivity activity = (PersonalizedRecipeStepsActivity) getActivity();
-             activity.sendRecipeRequest(stepArrayList);
-
-          /*  Intent i = new Intent(activity, ListPersonalizedRecipeActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);*/
-            Intent intent = new Intent();
-            intent.setClass(getContext(), ListPersonalizedRecipeActivity.class);
-            startActivity(intent);
-
+         submit();
         });
         return root;
     }
@@ -80,5 +74,28 @@ public class ListStepsPersonalizedRecipeFragment extends Fragment {
         ffrag.setArguments(args);
         ftran.replace(R.id.nav_host_fragment, ffrag);
         ftran.commit();
+    }
+
+    private void submit(){
+        if (stepArrayList.size() == 0) {
+            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context);
+            dlgAlert.setMessage("Vous devez saisir au moins une étape.");
+            dlgAlert.setTitle("Champs invalide");
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
+            dlgAlert.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+        } else {
+            PersonalizedRecipeStepsActivity activity = (PersonalizedRecipeStepsActivity) getActivity();
+            activity.sendRecipeRequest(stepArrayList);
+            Intent intent = new Intent();
+            intent.setClass(getContext(), ListPersonalizedRecipeActivity.class);
+            startActivity(intent);
+        }
     }
 }

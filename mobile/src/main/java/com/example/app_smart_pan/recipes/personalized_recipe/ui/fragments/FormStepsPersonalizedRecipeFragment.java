@@ -1,7 +1,10 @@
 package com.example.app_smart_pan.recipes.personalized_recipe.ui.fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,33 +105,54 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
      * forme objet step et l'ajoute à la liste view
      */
     private void saveStep() {
-        for (int i = 0; i < prerequisiteRecipes.size(); i++) {
-            View view = lvAddPrerequisite.getChildAt(i);
-            EditText editText = view.findViewById(R.id.etDetailsPrerequisite);
-            Float detail = Float.parseFloat(String.valueOf(editText.getText()));
-            prerequisiteRecipes.get(i).setDetail(detail);
+        if (TextUtils.isEmpty(etLabelStep.getText().toString()) || TextUtils.isEmpty(etDurationStep.getText().toString())) {
+            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context);
+            dlgAlert.setMessage("Vous devez remplir tous les champs.");
+            dlgAlert.setTitle("Champs invalide");
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
+            dlgAlert.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+        } else {
+
+            for (int i = 0; i < prerequisiteRecipes.size(); i++) {
+                View view = lvAddPrerequisite.getChildAt(i);
+                EditText editText = view.findViewById(R.id.etDetailsPrerequisite);
+                double detail = 0.1;
+                if (!TextUtils.isEmpty(editText.getText().toString())) {
+                    detail = Double.parseDouble(String.valueOf(editText.getText()));
+                }
+                prerequisiteRecipes.get(i).setDetail(detail);
+            }
+
+            for (int i = 0; i < ingredientsRecipe.size(); i++) {
+                View view = lvAddIngredients.getChildAt(i);
+                EditText editText = view.findViewById(R.id.tvQuantity);
+                int quantity = 1;
+                if (!TextUtils.isEmpty(editText.getText().toString())) {
+                    quantity = (Integer.parseInt(editText.getText().toString()));
+                }
+                ingredientsRecipe.get(i).setQuantity(quantity);
+            }
+
+
+            Step step = new Step(etLabelStep.getText().toString(), Integer.parseInt(etDurationStep.getText().toString()),
+                    ingredientsRecipe, prerequisiteRecipes);
+            stepArrayList.add(step);
+
+            FragmentManager frman = getFragmentManager();
+            FragmentTransaction ftran = frman.beginTransaction();
+            Fragment ffrag = new ListStepsPersonalizedRecipeFragment();
+            Bundle args = new Bundle();
+            args.putSerializable("stepToAdd", stepArrayList);
+            ffrag.setArguments(args);
+            ftran.replace(R.id.nav_host_fragment, ffrag);
+            ftran.commit();
         }
-
-        for (int i = 0; i < ingredientsRecipe.size(); i++) {
-            View view = lvAddIngredients.getChildAt(i);
-            EditText editText = view.findViewById(R.id.tvQuantity);
-            int quantity = (Integer.parseInt(editText.getText().toString()));
-            ingredientsRecipe.get(i).setQuantity(quantity);
-        }
-
-
-        Step step = new Step(etLabelStep.getText().toString(), Integer.parseInt(etDurationStep.getText().toString()),
-                ingredientsRecipe, prerequisiteRecipes);
-        stepArrayList.add(step);
-
-        FragmentManager frman = getFragmentManager();
-        FragmentTransaction ftran = frman.beginTransaction();
-        Fragment ffrag = new ListStepsPersonalizedRecipeFragment();
-        Bundle args = new Bundle();
-        args.putSerializable("stepToAdd", stepArrayList);
-        ffrag.setArguments(args);
-        ftran.replace(R.id.nav_host_fragment, ffrag);
-        ftran.commit();
     }
 
     /**

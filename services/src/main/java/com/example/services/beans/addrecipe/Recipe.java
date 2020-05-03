@@ -3,6 +3,7 @@ package com.example.services.beans.addrecipe;
 
 import com.example.services.beans.steprecipe.Step;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,11 +16,21 @@ public class Recipe implements Serializable {
     private Boolean isPrivate = false;
     private String image;
     private List<Step> steps;
+    private File file;
 
-    public Recipe(String labelRecipe, Boolean isPrivateRecipe, Integer recipeTypeId){
+    public Recipe(String labelRecipe, Boolean isPrivateRecipe, Integer recipeTypeId, File fileRecipe){
         label = labelRecipe;
         isPrivate = isPrivateRecipe;
         recipeTypeId = recipeTypeId;
+        file = fileRecipe;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
     }
 
     public List<Step> getSteps() {

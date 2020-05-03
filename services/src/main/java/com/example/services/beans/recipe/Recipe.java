@@ -43,6 +43,17 @@ public class Recipe implements Serializable {
         return isPrivate;
     }
 
+    public int getNbEtape() {
+        return steps.size();
+    }
+
+    public int getTemps() {
+        int time = 0;
+        for (Step step: steps) {
+            time += step.getDuration();
+        }
+        return time;
+    }
 
     public int getRecipeTypeId() {
         return recipeTypeId;
