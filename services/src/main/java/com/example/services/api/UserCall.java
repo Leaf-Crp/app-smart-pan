@@ -12,4 +12,7 @@ public interface UserCall {
     @POST("/check_login")
     Call<UserResponse> checkLogin(@Body UserJSON userJSON);
 
+    @POST("/users")
+    Call<String> create(@Body UserJSON userJSON);
+
 }
