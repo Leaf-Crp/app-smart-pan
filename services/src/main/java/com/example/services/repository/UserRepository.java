@@ -16,4 +16,11 @@ public class UserRepository extends BaseRepository {
         return call;
     }
 
+    public Call<String> create(UserJSON user) {
+        Retrofit retrofit = this.getRetrofit();
+        UserCall userCall = retrofit.create(UserCall.class);
+        Call<String> call = userCall.create(user);
+        return call;
+    }
+
 }

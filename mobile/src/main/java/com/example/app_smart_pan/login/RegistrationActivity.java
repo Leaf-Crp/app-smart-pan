@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,6 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app_smart_pan.R;
+import com.example.app_smart_pan.recipes.ui.adapter.ListRecipeAdapter;
+import com.example.services.api.UserCall;
+import com.example.services.api.config.Config;
+import com.example.services.beans.Recipe;
+import com.example.services.beans.User;
+import com.example.services.beans.user.UserJSON;
+import com.example.services.repository.UserRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,8 +32,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -85,6 +101,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     if(task.isSuccessful()){
                         //sendEmailVerification();
+
                         sendUserData();
                         firebaseAuth.signOut();
                         Toast.makeText(RegistrationActivity.this, "Successfully Registered, Upload complete!", Toast.LENGTH_SHORT).show();
@@ -162,5 +179,39 @@ public class RegistrationActivity extends AppCompatActivity {
         });
         UserProfile userProfile = new UserProfile(age, email, name);
         myRef.setValue(userProfile);
+
+        UserJSON userJSON = new UserJSON(email, password);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Config.getUrl())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        UserCall userCall = retrofit.create(UserCall.class);
+
+        Call<String> call = userCall.create(userJSON);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                Toast.makeText(RegistrationActivity.this, String.format("OK"), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                Toast.makeText(RegistrationActivity.this, String.format("KO"), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+//        call.enqueue(new Callback<String>() {
+//
+//            @Override
+//            public void onResponse(Call<String> call, Response<String> response) {
+//                Toast.makeText(RegistrationActivity.this, String.format("OK"), Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<String> call, Throwable t) {
+//                Toast.makeText(RegistrationActivity.this, String.format("KO"), Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 }
