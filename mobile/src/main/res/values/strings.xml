@@ -21,5 +21,6 @@
     <string name="validate_recipe">Valider la recette</string>
     <string name="add_steps">Ajouter des étapes</string>
     <string name="label_create_own_recipe">Créer ma propre recette</string>
+    <string name="label_shopping_list">Liste des courses</string>
 
 </resources>

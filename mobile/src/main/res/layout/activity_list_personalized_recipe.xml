@@ -7,14 +7,15 @@
     android:background="#161616"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
     <RelativeLayout
         android:id="@+id/rlHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         android:background="@color/rouge"
         android:paddingBottom="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         tools:ignore="MissingConstraints">
 
         <RelativeLayout
@@ -50,31 +51,51 @@
             android:textSize="20sp" />
 
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="24dp"
+        android:orientation="vertical"
         android:paddingLeft="24dp"
-        android:paddingBottom="24dp"
+
         android:paddingTop="8dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="24dp">
 
-        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnAddPersonalizedRecipe"
-            android:layout_width="150dp"
-            android:layout_height="32dp"
-            android:background="@color/rouge"
-            android:drawableLeft="@drawable/draw"
-            android:text="@string/label_create_own_recipe"
-            android:textColor="@color/white"
-            android:textSize="8sp" />
+            <Button
+                android:id="@+id/btnAddPersonalizedRecipe"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:background="@color/rouge"
+                android:drawableLeft="@drawable/draw"
+                android:text="@string/label_create_own_recipe"
+                android:textColor="@color/white"
+                android:textSize="8sp" />
+
+            <Button
+                android:id="@+id/btnShoppingList"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/rouge"
+                android:drawableLeft="@drawable/shopping"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/label_shopping_list"
+                android:textColor="@color/white"
+                android:textSize="8sp" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/lvListRecipe"
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:dividerHeight="12dp"/>
+            android:layout_marginTop="15dp"
+            android:dividerHeight="12dp" />
+
     </LinearLayout>
 </LinearLayout>

@@ -21,6 +21,7 @@ public class ListPersonalizedRecipeActivity extends AppCompatActivity {
     private ArrayList<Recipe> recipes;
     private ListOwnRecipesAdapter listRecipeAdapter;
     private Button btnAddPersonalizedRecipe;
+    private Button btnShoppingList;
     private RecipeRepository recipeRepository;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class ListPersonalizedRecipeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         listView = findViewById(R.id.lvListRecipe);
         btnAddPersonalizedRecipe = findViewById(R.id.btnAddPersonalizedRecipe);
+        btnShoppingList = findViewById(R.id.btnShoppingList);
+        btnShoppingList.setOnClickListener(view -> startActivity(new Intent(ListPersonalizedRecipeActivity.this, ShoppingListActivity.class)));
         btnAddPersonalizedRecipe.setOnClickListener(view -> startActivity(new Intent(ListPersonalizedRecipeActivity.this, PersonalizedRecipeActivity.class)));
         //recupérer ses own recipes
         recipeRepository = new RecipeRepository();
