@@ -38,9 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         userRegistration = (TextView)findViewById(R.id.tvRegister);
         forgotPassword = (TextView)findViewById(R.id.tvForgotPassword);
 
-
         firebaseAuth = FirebaseAuth.getInstance();
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this, R.style.LoadingLogin);
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
@@ -50,9 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         Login.setOnClickListener(view -> validate(Name.getText().toString(), Password.getText().toString()));
-
         userRegistration.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, RegistrationActivity.class)));
-
         forgotPassword.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, PasswordActivity.class)));
     }
 
@@ -60,33 +57,21 @@ public class LoginActivity extends AppCompatActivity {
 
         progressDialog.setMessage("Loading...");
         progressDialog.show();
-
-        firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
+        if ((userName.isEmpty() || userName == null) && (userPassword.isEmpty() || userPassword == null)){
+            progressDialog.dismiss();
+            Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+        }else {
+            firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(task -> {
+                if(task.isSuccessful())
+                    login();
+                else
+                    Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
-                //Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                checkEmailVerification();
-            }else{
-                Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
+            });
+        }
     }
 
-    private void checkEmailVerification(){
-        FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
-        Boolean emailflag = firebaseUser.isEmailVerified();
-
+    private void login(){
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
-//        if(emailflag){
-//            finish();
-//            startActivity(new Intent(MainActivity.this, SecondActivity.class));
-//        }else{
-//            Toast.makeText(this, "Verify your email", Toast.LENGTH_SHORT).show();
-//            firebaseAuth.signOut();
-//        }
     }
-
 }
