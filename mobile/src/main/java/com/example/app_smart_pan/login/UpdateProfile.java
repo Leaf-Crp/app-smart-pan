@@ -118,7 +118,7 @@ public class UpdateProfile extends AppCompatActivity {
                 uploadTask.addOnFailureListener(e -> Toast.makeText(UpdateProfile.this, "Upload failed!", Toast.LENGTH_SHORT).show()).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        Toast.makeText(UpdateProfile.this, "Upload successful!", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(UpdateProfile.this, "Upload successful!", Toast.LENGTH_SHORT).show();
                     }
                 });
 

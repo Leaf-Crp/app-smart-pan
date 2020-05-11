@@ -6,6 +6,8 @@
 
     <string name="error_login">Erreur de Connexion</string>
     <string name="loading">Chargement ...</string>
+    <string name="error_form">Veuillez remplir tous les champs</string>
+    <string name="error_cred">Email ou Mot de passe incorrect</string>
     <string name="twitterUsername">\@leafcorp</string>
     <string name="username">Username</string>
     <string name="label_label">Libellé</string>

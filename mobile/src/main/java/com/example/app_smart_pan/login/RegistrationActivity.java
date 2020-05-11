@@ -17,7 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.app_smart_pan.R;
 import com.example.services.api.UserCall;
 import com.example.services.api.config.Config;
+import com.example.services.beans.recipe.Recipe;
 import com.example.services.beans.user.UserJSON;
+import com.example.services.repository.UserRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,6 +36,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
+import java.util.List;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -42,11 +45,12 @@ public class RegistrationActivity extends AppCompatActivity {
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
     private ImageView userProfilePic;
-    String email, name, age, password;
+    private String email, name, age, password;
     private FirebaseStorage firebaseStorage;
     private static int PICK_IMAGE = 123;
-    Uri imagePath;
+    private Uri imagePath;
     private StorageReference storageReference;
+    private UserRepository userRepository;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -67,8 +71,9 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         setupUIViews();
-        getSupportActionBar().hide(); //hide the title bar
+        getSupportActionBar().hide();
 
+        userRepository = new UserRepository();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
 
@@ -85,15 +90,12 @@ public class RegistrationActivity extends AppCompatActivity {
 
         regButton.setOnClickListener(view -> {
             if(validate()){
-                //Upload data to the database
                 String user_email = userEmail.getText().toString().trim();
                 String user_password = userPassword.getText().toString().trim();
 
                 firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(task -> {
 
                     if(task.isSuccessful()){
-                        //sendEmailVerification();
-
                         sendUserData();
                         firebaseAuth.signOut();
                         Toast.makeText(RegistrationActivity.this, "Successfully Registered, Upload complete!", Toast.LENGTH_SHORT).show();
@@ -112,13 +114,13 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void setupUIViews(){
-        userName = (EditText)findViewById(R.id.etUserName);
-        userPassword = (EditText)findViewById(R.id.etUserPassword);
-        userEmail = (EditText)findViewById(R.id.etUserEmail);
-        regButton = (Button)findViewById(R.id.btnRegister);
-        userLogin = (TextView)findViewById(R.id.tvUserLogin);
-        userAge = (EditText)findViewById(R.id.etAge);
-        userProfilePic = (ImageView)findViewById(R.id.ivProfile);
+        userName = findViewById(R.id.etUserName);
+        userPassword = findViewById(R.id.etUserPassword);
+        userEmail = findViewById(R.id.etUserEmail);
+        regButton = findViewById(R.id.btnRegister);
+        userLogin = findViewById(R.id.tvUserLogin);
+        userAge = findViewById(R.id.etAge);
+        userProfilePic = findViewById(R.id.ivProfile);
     }
 
     private Boolean validate(){
@@ -129,14 +131,11 @@ public class RegistrationActivity extends AppCompatActivity {
         email = userEmail.getText().toString();
         age = userAge.getText().toString();
 
-
-
         if(name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty() || imagePath == null){
-            Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.error_form), Toast.LENGTH_SHORT).show();
         }else{
             result = true;
         }
-
         return result;
     }
 
@@ -166,21 +165,14 @@ public class RegistrationActivity extends AppCompatActivity {
         uploadTask.addOnFailureListener(e -> Toast.makeText(RegistrationActivity.this, "Upload failed!", Toast.LENGTH_SHORT).show()).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                Toast.makeText(RegistrationActivity.this, "Upload successful!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RegistrationActivity.this, "Upload successful!", Toast.LENGTH_SHORT).show();
             }
         });
         UserProfile userProfile = new UserProfile(age, email, name);
         myRef.setValue(userProfile);
 
         UserJSON userJSON = new UserJSON(email, password);
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Config.getUrl())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        UserCall userCall = retrofit.create(UserCall.class);
-
-        Call<String> call = userCall.create(userJSON);
+        Call<String> call = userRepository.create(userJSON);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call call, Response response) {
@@ -193,17 +185,5 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-//        call.enqueue(new Callback<String>() {
-//
-//            @Override
-//            public void onResponse(Call<String> call, Response<String> response) {
-//                Toast.makeText(RegistrationActivity.this, String.format("OK"), Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<String> call, Throwable t) {
-//                Toast.makeText(RegistrationActivity.this, String.format("KO"), Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 }

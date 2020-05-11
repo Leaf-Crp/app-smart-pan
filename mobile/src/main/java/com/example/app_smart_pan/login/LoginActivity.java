@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful())
                     login();
                 else
-                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.error_login), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.error_cred), Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             });
         }
