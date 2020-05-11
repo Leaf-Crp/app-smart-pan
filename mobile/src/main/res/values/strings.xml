@@ -4,6 +4,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_profile">Profile</string>
 
+    <string name="error_login">Erreur de Connexion</string>
+    <string name="loading">Chargement ...</string>
     <string name="twitterUsername">\@leafcorp</string>
     <string name="username">Username</string>
     <string name="label_label">Libellé</string>

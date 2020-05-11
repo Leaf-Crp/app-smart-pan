@@ -30,13 +30,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getSupportActionBar().hide(); //hide the title bar
+        getSupportActionBar().hide();
 
-        Name = (EditText)findViewById(R.id.etName);
-        Password = (EditText)findViewById(R.id.etPassword);
-        Login = (Button)findViewById(R.id.btnLogin);
-        userRegistration = (TextView)findViewById(R.id.tvRegister);
-        forgotPassword = (TextView)findViewById(R.id.tvForgotPassword);
+        Name = findViewById(R.id.etName);
+        Password = findViewById(R.id.etPassword);
+        Login = findViewById(R.id.btnLogin);
+        userRegistration = findViewById(R.id.tvRegister);
+        forgotPassword = findViewById(R.id.tvForgotPassword);
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this, R.style.LoadingLogin);
@@ -55,17 +55,17 @@ public class LoginActivity extends AppCompatActivity {
 
     private void validate(String userName, String userPassword) {
 
-        progressDialog.setMessage("Loading...");
+        progressDialog.setMessage(getResources().getString(R.string.loading));
         progressDialog.show();
         if ((userName.isEmpty() || userName == null) && (userPassword.isEmpty() || userPassword == null)){
             progressDialog.dismiss();
-            Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, getResources().getString(R.string.error_login), Toast.LENGTH_SHORT).show();
         }else {
             firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(task -> {
                 if(task.isSuccessful())
                     login();
                 else
-                    Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.error_login), Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             });
         }
