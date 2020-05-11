@@ -83,7 +83,6 @@
                 android:layout_height="32dp"
                 android:layout_marginLeft="20dp"
                 android:background="@color/rouge"
-                android:drawableLeft="@drawable/shopping"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/label_shopping_list"
                 android:textColor="@color/white"

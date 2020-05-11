@@ -8,12 +8,12 @@
 
     <fragment
         android:id="@+id/navigation_recipes"
-        android:name="com.example.app_smart_pan.recipes.personalized_recipe.ui.fragments.ListStepsPersonalizedRecipeFragment"
+        android:name="com.example.app_smart_pan.dashboard.ui.personalized_recipe.ui.fragments.ListStepsPersonalizedRecipeFragment"
         tools:layout="@layout/fragment_personalized_recipe_steps_list" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.app_smart_pan.recipes.personalized_recipe.ui.fragments.FormStepsPersonalizedRecipeFragment"
+        android:name="com.example.app_smart_pan.dashboard.ui.personalized_recipe.ui.fragments.FormStepsPersonalizedRecipeFragment"
         tools:layout="@layout/fragment_personalized_recipe_steps_form" />
 
 </navigation>

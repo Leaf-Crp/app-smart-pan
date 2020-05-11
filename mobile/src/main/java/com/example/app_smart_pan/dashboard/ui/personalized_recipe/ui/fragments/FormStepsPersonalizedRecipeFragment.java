@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.recipes.personalized_recipe.ui.fragments;
+package com.example.app_smart_pan.dashboard.ui.personalized_recipe.ui.fragments;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,8 +19,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.app_smart_pan.R;
-import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.IngredientListAdapter;
-import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.PrerequisiteTypeListAdapter;
+import com.example.app_smart_pan.dashboard.ui.personalized_recipe.ui.adapter.IngredientListAdapter;
+import com.example.app_smart_pan.dashboard.ui.personalized_recipe.ui.adapter.PrerequisiteTypeListAdapter;
 import com.example.services.beans.ingredient.Ingredient;
 import com.example.services.beans.ingredient.Ingredients;
 import com.example.services.beans.prerequisitetype.PrerequisiteType;

@@ -3,7 +3,9 @@ package com.example.services.beans.prerequisitetype;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PrerequisiteType {
+import java.io.Serializable;
+
+public class PrerequisiteType implements Serializable {
 
     @SerializedName("id")
     @Expose

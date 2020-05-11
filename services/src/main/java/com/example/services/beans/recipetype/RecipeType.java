@@ -3,7 +3,9 @@ package com.example.services.beans.recipetype;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RecipeType {
+import java.io.Serializable;
+
+public class RecipeType implements Serializable {
     @SerializedName("id")
     @Expose
     private int id;

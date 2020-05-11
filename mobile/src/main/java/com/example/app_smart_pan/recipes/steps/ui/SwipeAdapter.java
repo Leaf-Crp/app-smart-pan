@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.app_smart_pan.recipes.steps.ui.fragments.FragmentStep;
-import com.example.services.beans.Recipe;
+import com.example.services.beans.recipe.Recipe;
 
 
 public class SwipeAdapter extends FragmentStatePagerAdapter {

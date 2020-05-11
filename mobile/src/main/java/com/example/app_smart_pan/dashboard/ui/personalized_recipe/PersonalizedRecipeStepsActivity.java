@@ -1,8 +1,7 @@
-package com.example.app_smart_pan.recipes.personalized_recipe;
+package com.example.app_smart_pan.dashboard.ui.personalized_recipe;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;

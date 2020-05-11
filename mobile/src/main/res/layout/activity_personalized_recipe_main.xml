@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/solidCircle"
-    tools:context=".recipes.personalized_recipe.PersonalizedRecipeActivity">
+    tools:context=".dashboard.ui.personalized_recipe.PersonalizedRecipeActivity">
 
     <include
         android:id="@+id/rlHeader"

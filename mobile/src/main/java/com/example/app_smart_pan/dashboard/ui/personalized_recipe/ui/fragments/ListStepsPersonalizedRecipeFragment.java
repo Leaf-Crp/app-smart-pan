@@ -1,11 +1,10 @@
-package com.example.app_smart_pan.recipes.personalized_recipe.ui.fragments;
+package com.example.app_smart_pan.dashboard.ui.personalized_recipe.ui.fragments;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +18,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.app_smart_pan.R;
-import com.example.app_smart_pan.recipes.personalized_recipe.ListPersonalizedRecipeActivity;
-import com.example.app_smart_pan.recipes.personalized_recipe.PersonalizedRecipeStepsActivity;
-import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.StepListAdapter;
-import com.example.services.beans.addrecipe.Recipe;
+import com.example.app_smart_pan.dashboard.ui.personalized_recipe.ui.adapter.StepListAdapter;
+import com.example.app_smart_pan.dashboard.ui.personalized_recipe.ListPersonalizedRecipeActivity;
+import com.example.app_smart_pan.dashboard.ui.personalized_recipe.PersonalizedRecipeStepsActivity;
 import com.example.services.beans.steprecipe.Step;
 
 import java.util.ArrayList;

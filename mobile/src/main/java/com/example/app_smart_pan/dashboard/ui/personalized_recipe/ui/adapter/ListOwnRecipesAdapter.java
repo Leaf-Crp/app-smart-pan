@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter;
+package com.example.app_smart_pan.dashboard.ui.personalized_recipe.ui.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;

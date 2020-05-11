@@ -1,6 +1,8 @@
 package com.example.services.beans.ingredient;
 
-public class StepIngredient {
+import java.io.Serializable;
+
+public class StepIngredient implements Serializable {
     private int quantity;
 
     public int getQuantity() {

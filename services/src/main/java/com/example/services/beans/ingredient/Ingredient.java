@@ -3,7 +3,9 @@ package com.example.services.beans.ingredient;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Ingredient {
+import java.io.Serializable;
+
+public class Ingredient implements Serializable {
     @SerializedName("id")
     @Expose
     private int id;
@@ -16,6 +18,7 @@ public class Ingredient {
 
     private int quantity;
 
+    @SerializedName("step_ingredient")
     private StepIngredient stepIngredient;
 
     public Ingredient(int id, String label) {

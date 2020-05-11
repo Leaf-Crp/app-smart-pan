@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.app_smart_pan.R;
-import com.example.services.beans.Ingredients;
+import com.example.services.beans.ingredient.Ingredient;
 
 
 import java.util.List;
@@ -16,9 +16,9 @@ import java.util.List;
 public class ListIngredientAdapter extends BaseAdapter {
 
     Context context;
-    List<Ingredients> ingredients;
+    List<Ingredient> ingredients;
 
-    public ListIngredientAdapter(Context context, List<Ingredients> ingredients) {
+    public ListIngredientAdapter(Context context, List<Ingredient> ingredients) {
         this.context = context;
         this.ingredients = ingredients;
     }
@@ -48,7 +48,7 @@ public class ListIngredientAdapter extends BaseAdapter {
         ImageView imageView = convertView.findViewById(R.id.ingredient_imageView);
         TextView textViewQuantity = convertView.findViewById(R.id.quantity);
 
-        Ingredients ingredient = ingredients.get(position);
+        Ingredient ingredient = ingredients.get(position);
 
         int resourceId = context.getResources().getIdentifier(ingredient.getImage(), "drawable", context.getPackageName());
         imageView.setImageResource(resourceId);

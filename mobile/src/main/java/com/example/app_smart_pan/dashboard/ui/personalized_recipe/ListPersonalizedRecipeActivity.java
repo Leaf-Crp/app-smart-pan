@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.recipes.personalized_recipe;
+package com.example.app_smart_pan.dashboard.ui.personalized_recipe;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.app_smart_pan.R;
-import com.example.app_smart_pan.recipes.personalized_recipe.ui.adapter.ListOwnRecipesAdapter;
+import com.example.app_smart_pan.dashboard.ui.personalized_recipe.ui.adapter.ListOwnRecipesAdapter;
 import com.example.services.beans.recipe.Recipe;
 import com.example.services.beans.recipe.Recipes;
 import com.example.services.repository.RecipeRepository;

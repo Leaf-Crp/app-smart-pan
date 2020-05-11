@@ -20,7 +20,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         getSupportActionBar().hide();
         MediaPlayer splashSound = MediaPlayer.create(getApplicationContext(), R.raw.voila);
-//        splashSound.start();
+        splashSound.start();
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);

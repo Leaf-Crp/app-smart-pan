@@ -11,8 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.app_smart_pan.R;
-import com.example.app_smart_pan.recipes.personalized_recipe.ListPersonalizedRecipeActivity;
-import com.example.app_smart_pan.recipes.personalized_recipe.PersonalizedRecipeActivity;
+import com.example.app_smart_pan.dashboard.ui.personalized_recipe.ListPersonalizedRecipeActivity;
 
 
 public class DashboardFragment extends Fragment {

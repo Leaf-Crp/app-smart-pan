@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.app_smart_pan.R;
 import com.example.app_smart_pan.recipes.steps.ui.adapter.ListIngredientAdapter;
-import com.example.services.beans.Step;
+import com.example.services.beans.steprecipe.Step;
 
 public class FragmentStep extends Fragment {
     @Nullable

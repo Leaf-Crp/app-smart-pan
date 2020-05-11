@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.app_smart_pan.R;
-import com.example.services.beans.Recipe;
+import com.example.services.beans.recipe.Recipe;
 
 import java.util.ArrayList;
 import java.util.List;

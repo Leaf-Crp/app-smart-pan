@@ -9,8 +9,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.app_smart_pan.R;
 import com.example.app_smart_pan.recipes.steps.ui.SwipeAdapter;
-import com.example.services.beans.Recipe;
 
+import com.example.services.beans.recipe.Recipe;
 import org.json.JSONObject;
 
 import ua.naiksoftware.stomp.Stomp;

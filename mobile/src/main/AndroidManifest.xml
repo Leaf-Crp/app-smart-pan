@@ -35,9 +35,9 @@
         <activity android:name=".login.PasswordActivity"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".recipes.steps.StepActivity"/>
-        <activity android:name=".recipes.personalized_recipe.PersonalizedRecipeStepsActivity"/>
-        <activity android:name=".recipes.personalized_recipe.PersonalizedRecipeActivity"/>
-        <activity android:name=".recipes.personalized_recipe.ListPersonalizedRecipeActivity"/>
+        <activity android:name=".dashboard.ui.personalized_recipe.PersonalizedRecipeStepsActivity"/>
+        <activity android:name=".dashboard.ui.personalized_recipe.PersonalizedRecipeActivity"/>
+        <activity android:name=".dashboard.ui.personalized_recipe.ListPersonalizedRecipeActivity"/>
     </application>
 
 </manifest>

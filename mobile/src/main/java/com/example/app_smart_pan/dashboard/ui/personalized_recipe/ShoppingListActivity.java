@@ -1,4 +1,4 @@
-package com.example.app_smart_pan.recipes.personalized_recipe;
+package com.example.app_smart_pan.dashboard.ui.personalized_recipe;
 
 import android.content.Intent;
 import android.os.Bundle;
