@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#161616"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     android:padding="24dp"
     tools:context=".MainActivity">
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bolditalic"
             android:text="Rec"
-            android:textColor="@color/rouge"
+            android:textColor="@color/black"
             android:textSize="24dp"/>
 
         <TextView
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
-        android:text="smart frying pan"
+        android:text="La poêle intelligente"
         android:textColor="#fff"
         android:textSize="14dp"/>
 
