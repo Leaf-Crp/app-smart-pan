@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app_smart_pan.R;
+import com.example.services.beans.user.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -35,7 +36,7 @@ import java.io.IOException;
 
 public class UpdateProfile extends AppCompatActivity {
 
-    private EditText newUserName, newUserEmail, newUserAge;
+    private EditText newUserFirstName, newUserEmail, newUserLastName;
     private Button save;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -65,9 +66,9 @@ public class UpdateProfile extends AppCompatActivity {
         setContentView(R.layout.activity_update_profile);
         getSupportActionBar().hide(); //hide the title bar
 
-        newUserName = findViewById(R.id.etNameUpdate);
+        newUserFirstName = findViewById(R.id.etFirstNameUpdate);
+        newUserLastName = findViewById(R.id.etLastNameUpdate);
         newUserEmail = findViewById(R.id.etEmailUpdate);
-        newUserAge = findViewById(R.id.etAgeUpdate);
         save = findViewById(R.id.btnSave);
         updateProfilePic = findViewById(R.id.ivProfileUpdate);
 
@@ -82,10 +83,10 @@ public class UpdateProfile extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
-                newUserName.setText(userProfile.getUserName());
-                newUserAge.setText(userProfile.getUserAge());
-                newUserEmail.setText(userProfile.getUserEmail());
+                User user = dataSnapshot.getValue(User.class);
+                newUserFirstName.setText(user.getFirstname());
+                newUserLastName.setText(user.getLastname());
+                newUserEmail.setText(user.getEmail());
             }
 
             @Override
@@ -105,13 +106,13 @@ public class UpdateProfile extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = newUserName.getText().toString();
-                String age = newUserAge.getText().toString();
+                String firstName = newUserFirstName.getText().toString();
+                String lastName = newUserLastName.getText().toString();
                 String email = newUserEmail.getText().toString();
 
-                UserProfile userProfile = new UserProfile(age, email, name);
+                User user = new User(email, firstName, lastName);
 
-                databaseReference.setValue(userProfile);
+                databaseReference.setValue(user);
 
                 StorageReference imageReference = storageReference.child(firebaseAuth.getUid()).child("Images").child("Profile Pic");  //User id/Images/Profile Pic.jpg
                 UploadTask uploadTask = imageReference.putFile(imagePath);

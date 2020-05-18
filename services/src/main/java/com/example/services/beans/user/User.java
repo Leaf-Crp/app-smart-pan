@@ -10,14 +10,18 @@ public class User {
     private String alarm_ended_recipe;
     private String alarm_ended_step;
 
-    public User(String email, String password, String lastname, String firstname, Boolean is_connected_pan, String alarm_ended_recipe, String alarm_ended_step) {
+    public User(){}
+
+    public User(String email, String password, String lastname, String firstname) {
         this.email = email;
         this.password = password;
         this.lastname = lastname;
         this.firstname = firstname;
-        this.is_connected_pan = is_connected_pan;
-        this.alarm_ended_recipe = alarm_ended_recipe;
-        this.alarm_ended_step = alarm_ended_step;
+    }
+    public User(String email, String lastname, String firstname) {
+        this.email = email;
+        this.lastname = lastname;
+        this.firstname = firstname;
     }
 
     public String getEmail() {

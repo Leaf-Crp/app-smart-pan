@@ -15,10 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app_smart_pan.R;
-import com.example.services.api.UserCall;
-import com.example.services.api.config.Config;
-import com.example.services.beans.recipe.Recipe;
-import com.example.services.beans.user.UserJSON;
+import com.example.services.beans.user.User;
 import com.example.services.repository.UserRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,20 +29,17 @@ import com.google.firebase.storage.UploadTask;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
-import java.util.List;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText userName, userPassword, userEmail, userAge;
+    private EditText userFirstName, userPassword, userEmail, userLastName;
     private Button regButton;
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
     private ImageView userProfilePic;
-    private String email, name, age, password;
+    private String email, firstName, lastName, password;
     private FirebaseStorage firebaseStorage;
     private static int PICK_IMAGE = 123;
     private Uri imagePath;
@@ -114,24 +108,24 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void setupUIViews(){
-        userName = findViewById(R.id.etUserName);
+        userFirstName = findViewById(R.id.etUserFirstName);
+        userLastName = findViewById(R.id.etUserLastName);
         userPassword = findViewById(R.id.etUserPassword);
         userEmail = findViewById(R.id.etUserEmail);
         regButton = findViewById(R.id.btnRegister);
         userLogin = findViewById(R.id.tvUserLogin);
-        userAge = findViewById(R.id.etAge);
         userProfilePic = findViewById(R.id.ivProfile);
     }
 
     private Boolean validate(){
         Boolean result = false;
 
-        name = userName.getText().toString();
         password = userPassword.getText().toString();
         email = userEmail.getText().toString();
-        age = userAge.getText().toString();
+        lastName = userLastName.getText().toString();
+        firstName = userFirstName.getText().toString();
 
-        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty() || imagePath == null){
+        if(lastName.isEmpty() || password.isEmpty() || email.isEmpty() || firstName.isEmpty() || imagePath == null){
             Toast.makeText(this, getResources().getString(R.string.error_form), Toast.LENGTH_SHORT).show();
         }else{
             result = true;
@@ -168,11 +162,10 @@ public class RegistrationActivity extends AppCompatActivity {
 //                Toast.makeText(RegistrationActivity.this, "Upload successful!", Toast.LENGTH_SHORT).show();
             }
         });
-        UserProfile userProfile = new UserProfile(age, email, name);
-        myRef.setValue(userProfile);
+        User user = new User(email, password, lastName, firstName);
+        myRef.setValue(user);
 
-        UserJSON userJSON = new UserJSON(email, password);
-        Call<String> call = userRepository.create(userJSON);
+        Call<String> call = userRepository.create(user);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call call, Response response) {

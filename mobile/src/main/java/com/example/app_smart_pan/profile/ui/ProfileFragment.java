@@ -15,8 +15,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.app_smart_pan.login.LoginActivity;
 import com.example.app_smart_pan.login.UpdateProfile;
-import com.example.app_smart_pan.login.UserProfile;
 import com.example.app_smart_pan.R;
+import com.example.services.beans.user.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +32,7 @@ public class ProfileFragment extends Fragment {
 
     private ImageView profileUpdate, profilePic;;
     private Button logout;
-    private TextView profileName, profileAge, profileEmail;
+    private TextView profileFirstName, profileLastName, profileEmail;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseStorage firebaseStorage;
@@ -42,8 +42,8 @@ public class ProfileFragment extends Fragment {
 
         logout = root.findViewById(R.id.logout);
         profilePic = root.findViewById(R.id.profilePic);
-        profileAge = root.findViewById(R.id.tvProfileAge);
-        profileName = root.findViewById(R.id.tvProfileName);
+        profileLastName = root.findViewById(R.id.tvProfileLastName);
+        profileFirstName = root.findViewById(R.id.tvProfileFirstName);
         profileEmail = root.findViewById(R.id.tvProfileEmail);
         profileUpdate = root.findViewById(R.id.btnProfileUpdate);
 
@@ -65,10 +65,10 @@ public class ProfileFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
-                profileName.setText("" + userProfile.getUserName());
-                profileAge.setText("" + userProfile.getUserAge());
-                profileEmail.setText("" + userProfile.getUserEmail());
+                User user = dataSnapshot.getValue(User.class);
+                profileFirstName.setText("" + user.getFirstname());
+                profileLastName.setText("" + user.getLastname());
+                profileEmail.setText("" + user.getEmail());
             }
 
             @Override
