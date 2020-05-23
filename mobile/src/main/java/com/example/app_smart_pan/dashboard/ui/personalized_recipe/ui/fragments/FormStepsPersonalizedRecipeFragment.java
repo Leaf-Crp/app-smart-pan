@@ -106,7 +106,7 @@ public class FormStepsPersonalizedRecipeFragment extends Fragment {
      */
     private void saveStep() {
         if (TextUtils.isEmpty(etLabelStep.getText().toString()) || TextUtils.isEmpty(etDurationStep.getText().toString())) {
-            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context);
+            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context,R.style.AlertDialogFormStyle);
             dlgAlert.setMessage("Vous devez remplir tous les champs.");
             dlgAlert.setTitle("Champs invalide");
             dlgAlert.setPositiveButton("OK", null);

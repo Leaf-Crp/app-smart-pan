@@ -13,4 +13,16 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="android:colorControlActivated">#8E1313</item>
+        <item name="android:colorControlNormal">#8E136B</item>
+        <item name="android:colorControlHighlight">#8E1313</item>
+    </style>
+
+    <style name="AlertDialogFormStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:colorAccent">#8E1313</item>
+        <item name="android:textColor">#8E1313</item>
+        <item name="android:textColorPrimary">#8E1313</item>
+    </style>
+
 </resources>

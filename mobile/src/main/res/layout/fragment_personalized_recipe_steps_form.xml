@@ -39,9 +39,8 @@
             android:ems="10"
             android:hint="@string/label_label"
             android:inputType="textPersonName"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
-
+            android:textColor="@color/revertColorAccent"
+            android:textColorHint="@color/revertColorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -52,6 +51,8 @@
 
         <EditText
             android:id="@+id/etDurationStep"
+            android:textColor="@color/revertColorAccent"
+            android:textColorHint="@color/revertColorAccent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

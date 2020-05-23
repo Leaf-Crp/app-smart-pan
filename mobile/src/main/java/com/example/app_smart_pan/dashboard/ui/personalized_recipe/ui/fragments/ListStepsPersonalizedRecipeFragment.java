@@ -76,7 +76,7 @@ public class ListStepsPersonalizedRecipeFragment extends Fragment {
 
     private void submit(){
         if (stepArrayList.size() == 0) {
-            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context);
+            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context, R.style.AlertDialogFormStyle);
             dlgAlert.setMessage("Vous devez saisir au moins une étape.");
             dlgAlert.setTitle("Champs invalide");
             dlgAlert.setPositiveButton("OK", null);
