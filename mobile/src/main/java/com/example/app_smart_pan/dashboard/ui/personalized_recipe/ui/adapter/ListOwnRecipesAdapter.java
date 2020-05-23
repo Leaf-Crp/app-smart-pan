@@ -60,11 +60,8 @@ public class ListOwnRecipesAdapter extends BaseAdapter {
 
         Recipe recipe = recipes.get(position);
 
-        //int resourceId = context.getResources().getIdentifier(recipe.getImage(), "drawable", context.getPackageName());
-      //  imageView.setImageResource(resourceId);
-
         String imageUrl = Config.getUrl() + recipe.getImage();
-        Picasso.get().load(imageUrl).into(imageView, new Callback() {
+        Picasso.get().load(imageUrl).resize(400,300).transform(new CircleTransform()).into(imageView, new Callback() {
             @Override
             public void onSuccess() {
                 Log.d("IMAGE", "OKOK");
@@ -72,8 +69,8 @@ public class ListOwnRecipesAdapter extends BaseAdapter {
 
             @Override
             public void onError(Exception e) {
-                String imageDefaultUrl = Config.getUrl() + "public/uploads/default.png";
-                Picasso.get().load(imageDefaultUrl).into(imageView);
+                String imageDefaultUrl = Config.getUrl() + "public/uploads/default.jpg";
+                Picasso.get().load(imageDefaultUrl).resize(400,300).transform(new CircleTransform()).into(imageView);
             }
         });
 

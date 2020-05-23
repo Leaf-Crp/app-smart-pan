@@ -1,12 +1,11 @@
 package com.example.services.beans.recipe;
 
+import com.example.services.beans.message.message.Message;
 import com.example.services.beans.steprecipe.Step;
-
 import java.io.Serializable;
 import java.util.List;
 
 public class Recipe implements Serializable {
-
     private int id;
     private int nbEtape;
     private int temps;
@@ -15,10 +14,17 @@ public class Recipe implements Serializable {
     private Boolean isPrivate = false;
     private String image;
     private List<Step> steps;
+    private List<Message> messages;
+
 
     public List<Step> getSteps() {
         return steps;
     }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
 
     public void setSteps(List<Step> steps) {
         this.steps = steps;
@@ -48,6 +54,9 @@ public class Recipe implements Serializable {
         return steps.size();
     }
 
+    public int getNbMessages() {
+        return messages.size();
+    }
     public int getTemps() {
         int time = 0;
         for (Step step: steps) {
