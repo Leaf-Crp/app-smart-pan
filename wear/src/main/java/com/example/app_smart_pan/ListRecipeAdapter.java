@@ -7,6 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.services.beans.recipe.Recipe;
+
 import java.util.ArrayList;
 import java.util.List;
 

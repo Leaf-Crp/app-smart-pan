@@ -35,7 +35,7 @@ public class StepListAdapter extends ArrayAdapter<Step> {
         String label = getItem(position).getLabel();
         Integer duration = getItem(position).getDuration();
         Integer nbIngredients = getItem(position).getIngredients().size();
-        Integer nbPrerequisite = getItem(position).getPrerequisiteTypes().size();
+        Integer nbPrerequisite = getItem(position).getPrerequisite_type().size();
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mRessource, parent, false);

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.services.api.RecipesCall;
+import com.example.services.beans.recipe.Recipe;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
