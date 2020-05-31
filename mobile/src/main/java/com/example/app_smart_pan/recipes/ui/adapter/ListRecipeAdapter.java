@@ -1,13 +1,20 @@
 package com.example.app_smart_pan.recipes.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.app_smart_pan.R;
+import com.example.app_smart_pan.dashboard.ui.personalized_recipe.ShoppingListActivity;
+import com.example.app_smart_pan.messages.ui.MessageActivity;
+import com.example.app_smart_pan.recipes.steps.StepActivity;
+import com.example.app_smart_pan.recipes.ui.fragements.RecipeFragment;
 import com.example.services.beans.recipe.Recipe;
 
 import java.util.ArrayList;
@@ -49,6 +56,8 @@ public class ListRecipeAdapter extends BaseAdapter {
         TextView textViewLabel = convertView.findViewById(R.id.recipe_label);
         TextView textViewTemps = convertView.findViewById(R.id.recipe_temps);
         TextView textViewEtapes = convertView.findViewById(R.id.recipe_etapes);
+        TextView tvMessages = convertView.findViewById(R.id.tvMessages);
+        LinearLayout llComments = convertView.findViewById(R.id.llComments);
 
         Recipe recipe = recipes.get(position);
 
@@ -57,6 +66,12 @@ public class ListRecipeAdapter extends BaseAdapter {
         textViewLabel.setText(recipe.getLabel());
         textViewEtapes.setText(""+recipe.getNbEtape());
         textViewTemps.setText(""+recipe.getTemps());
+        tvMessages.setText(""+recipe.getNbMessages() + " messages");
+
+        llComments.setOnClickListener((view) -> {
+           Intent intent = new Intent(context, MessageActivity.class);
+           context.startActivity(intent);
+        });
 
         return convertView;
     }

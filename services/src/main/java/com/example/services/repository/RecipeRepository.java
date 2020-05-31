@@ -20,7 +20,7 @@ public class RecipeRepository extends BaseRepository {
 
     public Call<ResponseBody> saveRecipe(Recipe recipe) {
 
-        RecipeJSON recipeJson = new RecipeJSON(recipe.getLabel(), recipe.getPrivate(), "you",
+        RecipeJSON recipeJson = new RecipeJSON(recipe.getLabel(), recipe.getPrivate(), "",
                 1,recipe.getRecipeTypeId(), recipe.getSteps());
         Gson gson = new Gson();
         String json = gson.toJson(recipeJson);

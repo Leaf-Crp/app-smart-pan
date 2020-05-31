@@ -166,7 +166,7 @@ public class PersonalizedRecipeActivity extends AppCompatActivity {
      */
     private void nextStep() {
         if (TextUtils.isEmpty(etLabelRecipe.getText().toString()) || imgImageRecipe.getDrawable() == null) {
-            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this, R.style.AlertDialogFormStyle);
             dlgAlert.setMessage("Vous devez remplir tous les champs.");
             dlgAlert.setTitle("Champs invalide");
             dlgAlert.setPositiveButton("OK", null);

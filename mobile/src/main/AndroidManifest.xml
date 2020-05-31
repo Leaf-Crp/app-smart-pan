@@ -35,6 +35,7 @@
         <activity android:name=".login.PasswordActivity"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".recipes.steps.StepActivity"/>
+        <activity android:name=".messages.ui.MessageActivity"/>
         <activity android:name=".dashboard.ui.personalized_recipe.PersonalizedRecipeStepsActivity"/>
         <activity android:name=".dashboard.ui.personalized_recipe.PersonalizedRecipeActivity"/>
         <activity android:name=".dashboard.ui.personalized_recipe.ListPersonalizedRecipeActivity"/>
