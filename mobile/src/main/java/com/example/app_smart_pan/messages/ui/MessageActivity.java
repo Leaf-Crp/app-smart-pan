@@ -1,11 +1,13 @@
 package com.example.app_smart_pan.messages.ui;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app_smart_pan.R;
+import com.example.app_smart_pan.login.RegistrationActivity;
 import com.example.app_smart_pan.messages.ui.adapter.ListMessageAdapter;
 import com.example.services.beans.message.Message;
 import com.example.services.beans.message.Messages;
@@ -46,6 +49,7 @@ public class MessageActivity extends AppCompatActivity {
         sendedButton = findViewById(R.id.button_chatbox_send);
         mMessageRecycler = findViewById(R.id.reyclerview_message_list);
         mMessageRecycler.setHasFixedSize(true);
+
         messages = recipe.getMessages();
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
@@ -53,6 +57,7 @@ public class MessageActivity extends AppCompatActivity {
         mMessageRecycler.setItemViewCacheSize(0);
         // specify an adapter (see also next example)
         mAdapter = new ListMessageAdapter(this, messages);
+        mMessageRecycler.smoothScrollToPosition(messages.size());
         mMessageRecycler.setAdapter(mAdapter);
         sendedButton.setOnClickListener(view -> send());
     }
@@ -60,21 +65,27 @@ public class MessageActivity extends AppCompatActivity {
     /**
      * Enregistre message API et affiche nouveau
      */
-    public void send(){
-        Integer sessionId = 1;
-        Message message = new Message(etChatbox.getText().toString(), recipe.getId(), sessionId);
-        MessageRepository messageRepository = new MessageRepository();
-        Call<String> call =  messageRepository.create(message);
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                messages.add(message);
-                messageAdapter.notifyDataSetChanged();
-            }
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
+    public void send() {
+        if (TextUtils.isEmpty(etChatbox.getText().toString())) {
+            Toast.makeText(MessageActivity.this, "Vous devez renseigner un message", Toast.LENGTH_SHORT).show();
+        } else {
+            Integer sessionId = 1;
+            Message message = new Message(etChatbox.getText().toString(), recipe.getId(), sessionId);
+            MessageRepository messageRepository = new MessageRepository();
+            Call<String> call = messageRepository.create(message);
+            messages.add(message);
+            mAdapter.notifyDataSetChanged();
+            etChatbox.setText("");
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                }
 
-            }
-        });
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+
+                }
+            });
+        }
     }
 }

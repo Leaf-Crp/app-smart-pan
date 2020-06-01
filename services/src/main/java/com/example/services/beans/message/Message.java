@@ -5,8 +5,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.util.Date;
+import java.util.Locale;
 
 public class Message implements Serializable {
 
@@ -34,6 +37,7 @@ public class Message implements Serializable {
         this.content = content;
         this.id_recipe = id_recipe;
         this.id_user = id_user;
+        this.date = new Date(System.currentTimeMillis());
     }
 
     public int getId() {

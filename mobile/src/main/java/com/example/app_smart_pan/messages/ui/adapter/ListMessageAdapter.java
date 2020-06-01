@@ -36,7 +36,6 @@ public class ListMessageAdapter extends RecyclerView.Adapter{
      */
     @Override
     public int getItemViewType(int position) {
-        Log.d("SEND", "MERDE");
         Message message = (Message) mMessageList.get(position);
         int sessionId = 1;
         if (message.getId_user() == sessionId) {
@@ -97,7 +96,7 @@ public class ListMessageAdapter extends RecyclerView.Adapter{
         }
         void bind(Message message) {
             messageText.setText(message.getContent());
-            SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
             String date = formatter.format(message.getDate());
             timeText.setText(date);
         }
