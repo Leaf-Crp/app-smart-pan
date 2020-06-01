@@ -1,6 +1,6 @@
 package com.example.services.beans.recipe;
 
-import com.example.services.beans.message.message.Message;
+import com.example.services.beans.message.Message;
 import com.example.services.beans.steprecipe.Step;
 import java.io.Serializable;
 import java.util.List;

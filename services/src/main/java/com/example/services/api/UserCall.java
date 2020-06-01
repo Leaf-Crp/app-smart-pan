@@ -5,7 +5,9 @@ import com.example.services.beans.user.UserResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface UserCall {
 
@@ -15,4 +17,6 @@ public interface UserCall {
     @POST("/users")
     Call<String> create(@Body User user);
 
+    @GET("users/{email}")
+    Call<User> getUser(@Path("email") String email);
 }

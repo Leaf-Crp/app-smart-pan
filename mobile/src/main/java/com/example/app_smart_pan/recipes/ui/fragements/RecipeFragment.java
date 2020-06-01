@@ -12,10 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.app_smart_pan.R;
+import com.example.app_smart_pan.login.SessionManager;
 import com.example.app_smart_pan.recipes.steps.StepActivity;
 import com.example.app_smart_pan.recipes.ui.adapter.ListRecipeAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,13 +34,14 @@ public class RecipeFragment extends Fragment {
     private ArrayList<Recipe> recipes;
     private ListRecipeAdapter listRecipeAdapter;
     private RecipeRepository recipeRepository;
+    private SessionManager sessionManager;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_recipes, container, false);
-
+        sessionManager = new SessionManager(getContext());
         listView = root.findViewById(R.id.list_recipe);
         textViewResult = root.findViewById(R.id.text_view_result);
         recipeRepository = new RecipeRepository();
-
+        HashMap<String, String> user = sessionManager.getUserDetail();
         allRecipes();
 
         return root;
