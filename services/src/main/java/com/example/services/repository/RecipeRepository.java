@@ -18,14 +18,14 @@ import retrofit2.Retrofit;
 
 public class RecipeRepository extends BaseRepository {
 
-    public Call<ResponseBody> saveRecipe(Recipe recipe) {
+        public Call<ResponseBody> saveRecipe(Recipe recipe) {
 
         RecipeJSON recipeJson = new RecipeJSON(recipe.getLabel(), recipe.getPrivate(), "",
                 1,recipe.getRecipeTypeId(), recipe.getSteps());
         Gson gson = new Gson();
         String json = gson.toJson(recipeJson);
 
-        RequestBody requestBody2 = RequestBody.create(
+        RequestBody requestBody = RequestBody.create(
                 MediaType.parse("multipart/form-data"),
                 json
         );
@@ -35,7 +35,7 @@ public class RecipeRepository extends BaseRepository {
         Retrofit retrofit = this.getRetrofit();
 
         RecipesCall retrofit1 = retrofit.create(RecipesCall.class);
-        Call<ResponseBody> call = retrofit1.saveRecipe(multipartBody, requestBody2);
+        Call<ResponseBody> call = retrofit1.saveRecipe(multipartBody, requestBody);
         return call;
     }
 

@@ -70,6 +70,7 @@ public class ListRecipeAdapter extends BaseAdapter {
 
         llComments.setOnClickListener((view) -> {
            Intent intent = new Intent(context, MessageActivity.class);
+           intent.putExtra("recipe", recipe);
            context.startActivity(intent);
         });
 

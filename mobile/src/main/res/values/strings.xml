@@ -26,5 +26,6 @@
     <string name="add_steps">Ajouter des étapes</string>
     <string name="label_create_own_recipe">Créer ma recette</string>
     <string name="label_shopping_list">Liste de courses</string>
+    <string name="label_send_message">Envoyer</string>
 
 </resources>

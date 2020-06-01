@@ -1,4 +1,4 @@
-package com.example.services.beans.message.message;
+package com.example.services.beans.message;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -12,9 +12,9 @@ public class Message implements Serializable {
     @SerializedName("id")
     @Expose
     private int id;
-    @SerializedName("label")
+    @SerializedName("content")
     @Expose
-    private String label;
+    private String content;
     @SerializedName("id_recipe")
     @Expose
     private int id_recipe;
@@ -33,12 +33,12 @@ public class Message implements Serializable {
         this.id = id;
     }
 
-    public String getLabel() {
-        return label;
+    public String getContent() {
+        return content;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getId_recipe() {
