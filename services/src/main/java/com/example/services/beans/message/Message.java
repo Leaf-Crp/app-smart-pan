@@ -1,5 +1,6 @@
 package com.example.services.beans.message;
 
+import com.example.services.beans.user.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -25,6 +26,16 @@ public class Message implements Serializable {
     @Expose
     private Date date;
 
+    private User user;
+
+
+    public Message(String content, int id_recipe, int id_user) {
+        this.id = id;
+        this.content = content;
+        this.id_recipe = id_recipe;
+        this.id_user = id_user;
+    }
+
     public int getId() {
         return id;
     }
@@ -39,6 +50,14 @@ public class Message implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getId_recipe() {

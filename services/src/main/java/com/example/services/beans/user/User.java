@@ -1,7 +1,9 @@
 package com.example.services.beans.user;
 
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String email;
     private String password;
     private String lastname;
