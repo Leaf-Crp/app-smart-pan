@@ -10,7 +10,7 @@ public class User implements Serializable {
     private String password;
     private String lastname;
     private String firstname;
-    private int is_connected_pan;
+   // private int is_connected_pan;
     private String alarm_ended_recipe;
     private String alarm_ended_step;
 
@@ -21,7 +21,7 @@ public class User implements Serializable {
         this.password = password;
         this.lastname = lastname;
         this.firstname = firstname;
-        this.is_connected_pan = 1;
+    //    this.is_connected_pan = 1;
     }
     public User(String email, String lastname, String firstname) {
         this.email = email;
@@ -69,13 +69,13 @@ public class User implements Serializable {
         this.firstname = firstname;
     }
 
-    public int getIs_connected_pan() {
+    /*public int getIs_connected_pan() {
         return is_connected_pan;
     }
 
     public void setIs_connected_pan(int is_connected_pan) {
         this.is_connected_pan = is_connected_pan;
-    }
+    }*/
 
     public String getAlarm_ended_recipe() {
         return alarm_ended_recipe;

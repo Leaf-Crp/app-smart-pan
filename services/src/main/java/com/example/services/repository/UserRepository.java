@@ -23,10 +23,10 @@ public class UserRepository extends BaseRepository {
         return call;
     }
 
-    public Call<User> getUser(String email) {
+    public Call<UserResponse> getUser(String email) {
         Retrofit retrofit = this.getRetrofit();
         UserCall userCall = retrofit.create(UserCall.class);
-        Call<User> call = userCall.getUser(email);
+        Call<UserResponse> call = userCall.getUser(email);
         return call;
     }
 

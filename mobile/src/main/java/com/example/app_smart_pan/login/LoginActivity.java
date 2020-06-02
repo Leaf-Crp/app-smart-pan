@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,8 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app_smart_pan.MainActivity;
 import com.example.app_smart_pan.R;
+import com.example.services.beans.ingredient.StepIngredient;
 import com.example.services.beans.user.User;
+import com.example.services.beans.user.UserResponse;
 import com.example.services.repository.UserRepository;
+import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -41,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
 
-        sessionManager = new SessionManager(this);
+       sessionManager = new SessionManager(this);
         userRepository = new UserRepository();
         Email = findViewById(R.id.etName);
         Password = findViewById(R.id.etPassword);
@@ -59,24 +63,22 @@ public class LoginActivity extends AppCompatActivity {
             finish();
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
         }
-
         Login.setOnClickListener(view -> validate(Email.getText().toString(), Password.getText().toString()));
         userRegistration.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, RegistrationActivity.class)));
         forgotPassword.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, PasswordActivity.class)));
     }
 
-    private void getUserAndSetSession(String email){
-        Call<User> call = userRepository.getUser(email);
-        call.enqueue(new Callback<User>() {
+   private void getUserAndSetSession(String email){
+        Call<UserResponse> call = userRepository.getUser(email);
+        call.enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                Toast.makeText(getApplicationContext(), String.format("OK"), Toast.LENGTH_SHORT).show();
-                idUser = response.body().getId();
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                User userResponse = response.body().getUser();
+                Log.d("email", userResponse.getEmail());
+                Log.d("ID-USER", String.valueOf(userResponse.getId()));
             }
-
             @Override
             public void onFailure(Call call, Throwable t) {
-                Toast.makeText(getApplicationContext(), String.format("KO"), Toast.LENGTH_SHORT).show();
             }
         });
         String id = Integer.toString(idUser);
@@ -93,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         }else {
             firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(task -> {
                 if(task.isSuccessful()) {
-                    getUserAndSetSession(Email.getText().toString());
+                   getUserAndSetSession(Email.getText().toString());
                     login();
                 }
                 else

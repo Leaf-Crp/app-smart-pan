@@ -18,5 +18,5 @@ public interface UserCall {
     Call<String> create(@Body User user);
 
     @GET("users/{email}")
-    Call<User> getUser(@Path("email") String email);
+    Call<UserResponse> getUser(@Path("email") String email);
 }
