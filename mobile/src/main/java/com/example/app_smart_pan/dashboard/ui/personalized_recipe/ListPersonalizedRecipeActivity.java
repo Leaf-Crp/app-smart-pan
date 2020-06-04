@@ -8,6 +8,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.app_smart_pan.R;
 import com.example.app_smart_pan.dashboard.ui.personalized_recipe.ui.adapter.ListOwnRecipesAdapter;
+import com.example.app_smart_pan.login.SessionManager;
 import com.example.services.beans.recipe.Recipe;
 import com.example.services.beans.recipe.Recipes;
 import com.example.services.repository.RecipeRepository;
@@ -23,6 +24,9 @@ public class ListPersonalizedRecipeActivity extends AppCompatActivity {
     private Button btnAddPersonalizedRecipe;
     private Button btnShoppingList;
     private RecipeRepository recipeRepository;
+    private SessionManager sessionManager;
+    private Integer sessionId;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,8 @@ public class ListPersonalizedRecipeActivity extends AppCompatActivity {
         btnShoppingList = findViewById(R.id.btnShoppingList);
         btnShoppingList.setOnClickListener(view -> startActivity(new Intent(ListPersonalizedRecipeActivity.this, ShoppingListActivity.class)));
         btnAddPersonalizedRecipe.setOnClickListener(view -> startActivity(new Intent(ListPersonalizedRecipeActivity.this, PersonalizedRecipeActivity.class)));
+        sessionManager = new SessionManager(getApplicationContext());
+        sessionId = Integer.parseInt(sessionManager.getUserDetail().get("ID"));
         //recupérer ses own recipes
         recipeRepository = new RecipeRepository();
         getRecipes();
@@ -40,7 +46,7 @@ public class ListPersonalizedRecipeActivity extends AppCompatActivity {
     }
 
     private void getRecipes() {
-        Call<Recipes> call = recipeRepository.ownRecipesQuery();
+        Call<Recipes> call = recipeRepository.ownRecipesQuery(sessionId);
         call.enqueue(new Callback<Recipes>() {
             @Override
             public void onResponse(Call<Recipes> call, Response<Recipes> response) {

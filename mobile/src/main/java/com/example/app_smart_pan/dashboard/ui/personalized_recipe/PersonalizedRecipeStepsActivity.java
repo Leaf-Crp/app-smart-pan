@@ -40,7 +40,6 @@ public class PersonalizedRecipeStepsActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions((Activity) mContext, PERMISSIONS, REQUEST);
         } else {
             Call<ResponseBody> call =  recipeRepository.saveRecipe(recipe);
-
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -53,10 +52,6 @@ public class PersonalizedRecipeStepsActivity extends AppCompatActivity {
             });
         }
         finish();
-
-        //  Intent intent = new Intent();
-        //  intent.setClass(getApplicationContext(), ListPersonalizedRecipeActivity.class);
-        ///  startActivity(intent);
     }
 
     private static boolean hasPermissions(Context context, String... permissions) {
@@ -77,10 +72,9 @@ public class PersonalizedRecipeStepsActivity extends AppCompatActivity {
         switch (requestCode) {
             case REQUEST: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d("app not alloxew", "ALLLLLLLLLLLLLLLLLLLLOWEDD");
-
+                    Log.d(" allowed", "allowed");
                 } else {
-                    Log.d("app not alloxew", "app not alloxew");
+                    Log.d("app not allowed", "app not allowed");
                 }
             }
         }

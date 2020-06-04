@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.app_smart_pan.R;
+import com.example.app_smart_pan.login.SessionManager;
 import com.example.services.beans.addrecipe.Recipe;
 import com.example.services.beans.recipetype.RecipeType;
 import com.example.services.beans.recipetype.RecipeTypes;
@@ -54,6 +55,9 @@ public class PersonalizedRecipeActivity extends AppCompatActivity {
     private Button btnUploadImage;
     private File file;
     private Context mContext = PersonalizedRecipeActivity.this;
+    private SessionManager sessionManager;
+    private Integer sessionId;
+
 
     @SuppressLint("IntentReset")
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,8 @@ public class PersonalizedRecipeActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
         imgImageRecipe = findViewById(R.id.imgImageRecipe);
         btnUploadImage = findViewById(R.id.btnUploadImage);
+        sessionManager = new SessionManager(getApplicationContext());
+        sessionId = Integer.parseInt(sessionManager.getUserDetail().get("ID"));
 
         btnUploadImage.setOnClickListener((view) -> {
             Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -100,7 +106,6 @@ public class PersonalizedRecipeActivity extends AppCompatActivity {
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null) {
             if (resultCode == RESULT_OK) {
                 Log.d("present", "ici");
-
                 String[] PERMISSIONS = {android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE};
                 if (!hasPermissions(mContext, PERMISSIONS)) {
                     ActivityCompat.requestPermissions((Activity) mContext, PERMISSIONS, REQUEST);
@@ -178,7 +183,7 @@ public class PersonalizedRecipeActivity extends AppCompatActivity {
                         }
                     });
         } else {
-            Recipe recipe = new Recipe(etLabelRecipe.getText().toString(), swIsPrivateType.isChecked(), (int) spinnerRecipeType.getSelectedItemId(), file);
+            Recipe recipe = new Recipe(etLabelRecipe.getText().toString(), swIsPrivateType.isChecked(), (int) spinnerRecipeType.getSelectedItemId(), file, sessionId);
             Intent intent = new Intent(this, PersonalizedRecipeStepsActivity.class);
             intent.putExtra("RECIPE", recipe);
             startActivity(intent);

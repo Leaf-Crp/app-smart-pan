@@ -17,12 +17,14 @@ public class Recipe implements Serializable {
     private String image;
     private List<Step> steps;
     private File file;
+    private int userId = 1;
 
-    public Recipe(String labelRecipe, Boolean isPrivateRecipe, Integer recipeTypeId, File fileRecipe){
+    public Recipe(String labelRecipe, Boolean isPrivateRecipe, Integer recipeTypeId, File fileRecipe, Integer userid){
         label = labelRecipe;
         isPrivate = isPrivateRecipe;
         recipeTypeId = recipeTypeId;
         file = fileRecipe;
+        userId = userid;
     }
 
     public File getFile() {
@@ -72,5 +74,13 @@ public class Recipe implements Serializable {
 
     public void setPrivate(Boolean aPrivate) {
         isPrivate = aPrivate;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

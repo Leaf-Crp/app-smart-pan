@@ -21,7 +21,7 @@ public class RecipeRepository extends BaseRepository {
         public Call<ResponseBody> saveRecipe(Recipe recipe) {
 
         RecipeJSON recipeJson = new RecipeJSON(recipe.getLabel(), recipe.getPrivate(), "",
-                1,recipe.getRecipeTypeId(), recipe.getSteps());
+                recipe.getUserId(),recipe.getRecipeTypeId(), recipe.getSteps());
         Gson gson = new Gson();
         String json = gson.toJson(recipeJson);
 
@@ -39,10 +39,10 @@ public class RecipeRepository extends BaseRepository {
         return call;
     }
 
-    public Call<Recipes> ownRecipesQuery() {
+    public Call<Recipes> ownRecipesQuery(Integer id) {
         Retrofit retrofit = this.getRetrofit();
         RecipesCall recipesCall = retrofit.create(RecipesCall.class);
-        Call<Recipes> call = recipesCall.ownRecipes();
+        Call<Recipes> call = recipesCall.ownRecipes(id);
         return call;
     }
 

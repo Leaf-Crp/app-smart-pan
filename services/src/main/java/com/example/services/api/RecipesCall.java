@@ -13,14 +13,15 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public interface RecipesCall {
 
     @GET("recipes")
     Call<List<Recipe>> allRecipes();
 
-    @GET("recipes/users")
-    Call<Recipes> ownRecipes();
+    @GET("recipes/users/{id}")
+    Call<Recipes> ownRecipes(@Path("id") Integer id);
 
     @Multipart
     @POST("/recipes")

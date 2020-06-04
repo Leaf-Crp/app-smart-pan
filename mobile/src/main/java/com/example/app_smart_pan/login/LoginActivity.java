@@ -74,15 +74,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 User userResponse = response.body().getUser();
-                Log.d("email", userResponse.getEmail());
                 Log.d("ID-USER", String.valueOf(userResponse.getId()));
+                String id = Integer.toString(userResponse.getId());
+                sessionManager.createSession(email, id);
             }
             @Override
             public void onFailure(Call call, Throwable t) {
             }
         });
-        String id = Integer.toString(idUser);
-        sessionManager.createSession(email, id);
     }
 
     private void validate(String userName, String userPassword) {

@@ -18,10 +18,12 @@ public class ListMessageAdapter extends RecyclerView.Adapter{
     private static final int VIEW_TYPE_MESSAGE_SENT = 1;
     private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
     private Context mContext;
+    private Integer sessionId;
 
-    public ListMessageAdapter(Context context, List<Message> messages) {
+    public ListMessageAdapter(Context context, List<Message> messages, Integer id) {
         mContext = context;
         mMessageList = messages;
+        sessionId = id;
     }
 
     @Override
@@ -37,7 +39,7 @@ public class ListMessageAdapter extends RecyclerView.Adapter{
     @Override
     public int getItemViewType(int position) {
         Message message = (Message) mMessageList.get(position);
-        int sessionId = 1;
+        int sessionId = this.sessionId;
         if (message.getId_user() == sessionId) {
             return VIEW_TYPE_MESSAGE_SENT;
         } else {
@@ -114,7 +116,7 @@ public class ListMessageAdapter extends RecyclerView.Adapter{
         }
         void bind(Message message) {
             messageText.setText(message.getContent());
-            SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
             String date = formatter.format(message.getDate());
             timeText.setText(date);
             nameText.setText(String.valueOf(message.getUser().getFirstname() + " "+ message.getUser().getLastname()));
