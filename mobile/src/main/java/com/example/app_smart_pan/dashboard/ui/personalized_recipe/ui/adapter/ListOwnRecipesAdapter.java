@@ -18,6 +18,7 @@ import com.example.services.beans.recipe.Recipe;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,11 +58,13 @@ public class ListOwnRecipesAdapter extends BaseAdapter {
         TextView textViewLabel = convertView.findViewById(R.id.recipe_label);
         TextView textViewTemps = convertView.findViewById(R.id.recipe_temps);
         TextView textViewEtapes = convertView.findViewById(R.id.recipe_etapes);
+        TextView tvMessage = convertView.findViewById(R.id.tvMessages);
+        ImageView ivMessage = convertView.findViewById(R.id.ivMessages);
 
         Recipe recipe = recipes.get(position);
 
         String imageUrl = Config.getUrl() + recipe.getImage();
-        Picasso.get().load(imageUrl).resize(400,300).transform(new CircleTransform()).into(imageView, new Callback() {
+        Picasso.get().load(imageUrl).resize(400, 300).transform(new CircleTransform()).into(imageView, new Callback() {
             @Override
             public void onSuccess() {
                 Log.d("IMAGE", "OKOK");
@@ -70,14 +73,15 @@ public class ListOwnRecipesAdapter extends BaseAdapter {
             @Override
             public void onError(Exception e) {
                 String imageDefaultUrl = Config.getUrl() + "public/uploads/default.jpg";
-                Picasso.get().load(imageDefaultUrl).resize(400,300).transform(new CircleTransform()).into(imageView);
+                Picasso.get().load(imageDefaultUrl).resize(400, 300).transform(new CircleTransform()).into(imageView);
             }
         });
-
         textViewLabel.setText(recipe.getLabel());
-         textViewEtapes.setText(""+recipe.getNbEtape());
-          textViewTemps.setText(""+recipe.getTemps());
+        textViewEtapes.setText("" + recipe.getNbEtape());
+        textViewTemps.setText("" + recipe.getTemps());
 
+        tvMessage.setText(null);
+        ivMessage.setImageResource(0);
         return convertView;
     }
 }
